@@ -42,7 +42,7 @@ nav {
     margin-top: 20px;
 }
 
-button {
+.category-btn, #new-category {
     background-color: transparent;
     border: none;
     border-radius: 3px;

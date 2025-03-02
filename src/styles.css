@@ -24,7 +24,7 @@ body {
 
 #sidebar {
     background-color: rgb(255, 255, 255);
-    width: 320px;
+    width: 340px;
     height: 100%;
     border-radius: 10px;
     padding: 30px 30px 0 30px;
@@ -122,17 +122,20 @@ h2 {
 .bookmark-card {
     background-color: white;
     border-radius: 5px;
-    height: 100px;
+    height: 150px;
     transition: background-color .3s;
     cursor: pointer;
-    padding: 10px 15px 0 15px;
+    padding: 10px 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .bookmark-card:hover {
     background-color: rgb(255, 255, 212);
 }
 
-.bookmark-card > h3 {
+.card-text > h3 {
     font-weight: 700;
     margin-bottom: 5px;
 }
@@ -144,7 +147,20 @@ h2 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-
 }
 
+.card-buttons {
+    margin-top: 15px;
+}
+
+.card-buttons > button {
+    width: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+svg {
+    display: inline-block;
+    max-width: 100%;
+}
 

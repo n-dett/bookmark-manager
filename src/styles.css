@@ -44,6 +44,10 @@ nav {
     margin-top: 20px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .category-btn, #add-category {
     margin: 0 0 10px 0;
 }
@@ -69,7 +73,6 @@ nav {
     padding: 5px 0 5px 5px;
     text-align: left;
     transition: background-color .3s;
-    cursor: pointer;
 }
 
 .category-btn:hover, .subcat:hover, .category-btn.active {
@@ -163,5 +166,12 @@ h2 {
 svg {
     display: inline-block;
     max-width: 100%;
+    fill: rgb(150, 150, 150);
+    transition: fill .3s;
+}
+
+svg:hover {
+    /* fill: rgb(120, 120, 120); */
+    fill: rgb(211, 141, 71);
 }
 

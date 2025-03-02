@@ -10,14 +10,20 @@
         <h1>Bookmarks Manager</h1>
         <button id="new-category">Add Category +</button>
         <nav>
-            <button class="category-btn">Favorites</button>
-            <button class="category-btn">Category 1 &#9662</button>
+            <button class="category-btn category-name">Favorites</button>
+            <button class="category-btn">
+                <span class="category-name">Category 1</span>
+                <span class="caret">&#9656</span>
+            </button>
             <ul class="subcat-list">
-                <li>Subcategory 1</li>
-                <li>Subcategory 2</li>
-                <li>Subcategory 3</li>
+                <li class="subcat">Subcategory 1</li>
+                <li class="subcat">Subcategory 2</li>
+                <li class="subcat">Subcategory 3</li>
             </ul>
-            <button class="category-btn">Category 2 &#9656</button>
+            <button class="category-btn">
+                <span class="category-name">Category 2</span>
+                <span class="caret">&#9656</span>
+            </button>
         </nav>
     </div>
 

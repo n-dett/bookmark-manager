@@ -43,21 +43,37 @@ nav {
 }
 
 .category-btn, #new-category {
+    margin: 0 0 15px 0;
+}
+
+.category-name, .caret {
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+.caret {
+    margin-left: 8px;
+    font-size: 1.3rem;
+}
+
+.subcat {
+    margin: 0 0 10px 0
+}
+
+.category-btn, .subcat, #new-category {
     background-color: transparent;
     border: none;
     border-radius: 3px;
     padding: 5px 0 5px 5px;
-    margin: 0 0 15px 0;
     text-align: left;
-    font-weight: 600;
-    font-size: 1.15rem;
     transition: background-color .3s;
     cursor: pointer;
 }
 
-.category-btn:hover, .active {
+.category-btn:hover, .subcat:hover, .active {
     background-color: rgb(240, 240, 240);
 }
+
 
 #new-category {
     margin-top: 30px;
@@ -67,7 +83,7 @@ nav {
 .subcat-list {
     padding-left: 5px;
     list-style-type: none;
-    /* display: none; */
+    display: none;
     
 }
 

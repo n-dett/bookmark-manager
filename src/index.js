@@ -1,7 +1,7 @@
 import "./styles.css";
-import { toggleAccordion } from "./event-listeners";
+import { toggleAccordion, toggleAccordionListener } from "./event-listeners";
 
 // Add all event listeners
 document.addEventListener("DOMContentLoaded", () => {
-    toggleAccordion();
+    toggleAccordionListener();
 })

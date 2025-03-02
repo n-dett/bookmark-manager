@@ -8,8 +8,9 @@
 <body>
     <div id="sidebar">
         <h1>Bookmarks Manager</h1>
-        <button id="new-category">Add Category +</button>
+        <button id="add-category">Add Category +</button>
         <nav>
+            <button class="category-btn category-name">All</button>
             <button class="category-btn category-name">Favorites</button>
             <button class="category-btn">
                 <span class="category-name">Category 1</span>
@@ -28,13 +29,18 @@
     </div>
 
     <div id="main-content">
-        <h2 id="category-heading">All</h2>
+        <div id="main-content-header">
+            <h2 id="category-heading">All</h2>
+            <p id="add-bookmark">Add Bookmark +</p>
+        </div>
         <div id="bookmarks-container">
             <div class="bookmark-card">
-
+                <h3>Wikipedia</h3>
+                <p class="url-text">www.wikipedia.com</p>
             </div>
             <div class="bookmark-card">
-
+                <h3>Response Times: The 3 Important Limits</h3>
+                <p class="url-text">https://www.nngroup.com/articles/response-times-3-important-limits/</p>
             </div>
             <div class="bookmark-card">
 

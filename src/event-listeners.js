@@ -1,4 +1,6 @@
-function toggleAccordion() {
+import { toggleSubcatVisibility } from "./update-UI";
+
+function toggleAccordionListener() {
     const carets = document.querySelectorAll('.caret');
     carets.forEach(caret => {
         caret.addEventListener("click", function (e) {
@@ -9,16 +11,12 @@ function toggleAccordion() {
             if(!subCatList) return;
 
             // Toggle visibility of the subcategories
-            if(subCatList.style.display === "none") {
-                subCatList.style.display = "block";
-                caret.innerHTML = "&#9662";
-            } else {
-                subCatList.style.display = "none";
-                caret.innerHTML = "&#9656";
-            }
+            toggleSubcatVisibility(subCatList, caret);
         })
     });
 }
 
 
-export{ toggleAccordion }
+
+
+export{ toggleAccordionListener }

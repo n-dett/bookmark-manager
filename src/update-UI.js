@@ -13,6 +13,4 @@ function toggleHeartIcon(heartIcon) {
 
 
 
-
-
 export { toggleSubcatVisibility, toggleHeartIcon }

@@ -92,14 +92,23 @@
     </div>
 
     <!-- Add bookmark modal -->
-     <!-- <div class="modal-background">
-         <div id="add-bookmark-modal" class="modal">
-            <div>
-                <label for=""></label>
-                <input type="text">
+     <div class="modal-background">
+         <form id="add-bookmark-form" class="modal">
+            <div class="close-btn-container">
+                <button class="close-btn">&#10005</button>
             </div>
-         </div>
-     </div> -->
+            <h1>Add Bookmark</h1>
+            <div>
+                <label for="new-bookmark-name">Bookmark Name</label>
+                <input type="text" id="new-bookmark-name" maxlength="70">
+            </div>
+            <div>
+                <label for="new-bookmark-url">URL</label>
+                <input type="text" id="new-bookmark-url">
+            </div>
+            <button type="submit" class="submit-form-btn">Add</button>
+         </form>
+     </div>
 
 </body>
 </html>

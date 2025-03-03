@@ -85,9 +85,6 @@ button {
     font-size: 1rem;
 }
 
-.hidden {
-    display: none;
-}
 
 .subcat-list {
     padding-left: 5px;
@@ -253,4 +250,8 @@ input {
     border: none;
     margin: 12px 0 0 -25px;
     font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
 }

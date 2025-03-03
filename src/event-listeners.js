@@ -1,4 +1,4 @@
-import { toggleHeartIcon, toggleSubcatVisibility } from "./update-UI";
+import { toggleHeartIcon, toggleSubcatVisibility, closeModal } from "./update-UI";
 
 function accordionListener() {
     const carets = document.querySelectorAll('.caret');
@@ -19,14 +19,25 @@ function accordionListener() {
 function heartIconListener() {
     const heartBtns = document.querySelectorAll('.heart-btn');
     heartBtns.forEach(heartBtn => {
-        let heartIcon= heartBtn.firstElementChild;
-        heartBtn.addEventListener("mousedown", function() {
+        const heartIcon= heartBtn.firstElementChild;
+        heartBtn.addEventListener("click", function() {
             toggleHeartIcon(heartIcon);
         })
     });
 }
 
+function closeModalListener() {
+    const closeBtns = document.querySelectorAll('.close-btn');
+    closeBtns.forEach(btn => {
+        const modal = btn.closest('.modal-background');
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            closeModal(modal);
+        })
+    })
+}
 
 
 
-export{ accordionListener, heartIconListener }
+
+export{ accordionListener, heartIconListener, closeModalListener }

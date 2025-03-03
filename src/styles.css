@@ -160,20 +160,24 @@ h2 {
 }
 
 .card-buttons > button {
-    width: 25px;
+    width: 22px;
     background-color: transparent;
     border: none;
 }
 
 svg {
+    width: 100%;
     display: inline-block;
-    max-width: 100%;
-    fill: rgb(150, 150, 150);
+    fill: rgb(160, 160, 160);
     transition: fill .3s;
 }
 
 svg:hover {
-    /* fill: rgb(120, 120, 120); */
-    fill: rgb(211, 141, 71);
+    fill: rgb(50, 50, 50);
 }
 
+.modal {
+    /* display: none; */
+    z-index: 1;
+    overflow: auto;
+}

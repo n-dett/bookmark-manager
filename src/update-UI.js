@@ -7,10 +7,12 @@ function toggleSubcatVisibility(subCatList, caret) {
     }
 }
 
+function toggleHeartIcon(heartIcon) {
+    heartIcon.classList.toggle('heart-inactive');
+}
 
 
 
 
 
-
-export { toggleSubcatVisibility }
+export { toggleSubcatVisibility, toggleHeartIcon }

@@ -172,9 +172,10 @@ svg {
     transition: fill .3s;
 }
 
-svg:hover {
+svg:hover, .heart-inactive {
     fill: rgb(50, 50, 50);
 }
+
 
 .modal {
     /* display: none; */

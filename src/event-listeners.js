@@ -1,9 +1,9 @@
-import { toggleSubcatVisibility } from "./update-UI";
+import { toggleHeartIcon, toggleSubcatVisibility } from "./update-UI";
 
-function toggleAccordionListener() {
+function accordionListener() {
     const carets = document.querySelectorAll('.caret');
     carets.forEach(caret => {
-        caret.addEventListener("mousedown", function (e) {
+        caret.addEventListener("mousedown", function(e) {
             const categoryBtn = caret.closest('.category-btn');
             const subCatList = categoryBtn.nextElementSibling;
 
@@ -16,7 +16,17 @@ function toggleAccordionListener() {
     });
 }
 
+function heartIconListener() {
+    const heartBtns = document.querySelectorAll('.heart-btn');
+    heartBtns.forEach(heartBtn => {
+        let heartIcon= heartBtn.firstElementChild;
+        heartBtn.addEventListener("mousedown", function() {
+            toggleHeartIcon(heartIcon);
+        })
+    });
+}
 
 
 
-export{ toggleAccordionListener }
+
+export{ accordionListener, heartIconListener }

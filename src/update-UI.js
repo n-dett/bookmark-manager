@@ -1,11 +1,16 @@
 function toggleSubcatVisibility(subCatList, caret) {
-    if(subCatList.style.display === "none") {
-        subCatList.style.display = "block";
-        caret.innerHTML = "&#9662";
+    subCatList.classList.toggle('hidden');
+    if(caret.textContent === "▸") {
+        caret.innerHTML = "▾";
     } else {
-        subCatList.style.display = "none";
-        caret.innerHTML = "&#9656";
+        caret.innerHTML = "▸";
     }
 }
+
+
+
+
+
+
 
 export { toggleSubcatVisibility }

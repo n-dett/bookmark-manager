@@ -3,7 +3,7 @@ import { toggleSubcatVisibility } from "./update-UI";
 function toggleAccordionListener() {
     const carets = document.querySelectorAll('.caret');
     carets.forEach(caret => {
-        caret.addEventListener("click", function (e) {
+        caret.addEventListener("mousedown", function (e) {
             const categoryBtn = caret.closest('.category-btn');
             const subCatList = categoryBtn.nextElementSibling;
 

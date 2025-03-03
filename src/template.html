@@ -6,6 +6,7 @@
     <title>Bookmarks Manager</title>
 </head>
 <body>
+    <!-- Sidebar Navigation -->
     <div id="sidebar">
         <h1>Bookmarks Manager</h1>
         <button id="add-category">Add Category +</button>
@@ -16,7 +17,7 @@
                 <span class="category-name">Category 1</span>
                 <span class="caret">&#9656</span>
             </button>
-            <ul class="subcat-list">
+            <ul class="subcat-list hidden">
                 <li class="subcat">Subcategory 1</li>
                 <li class="subcat">Subcategory 2</li>
                 <li class="subcat">Subcategory 3</li>
@@ -28,6 +29,7 @@
         </nav>
     </div>
 
+    <!-- Main Content -->
     <div id="main-content">
         <div id="main-content-header">
             <h2 id="category-heading">School</h2>
@@ -40,9 +42,6 @@
                     <p class="url-text">www.wikipedia.com</p>
                 </div>
                 <div class="card-buttons">
-                    <button id="Information">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,15a1,1,0,0,1-2,0V11a1,1,0,0,1,2,0ZM12,8a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,12,8Z"/></svg>
-                    </button>
                     <button id="Edit">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 14-3 1 1-3 7-7 2 2z"/></svg>
@@ -59,9 +58,6 @@
                     <p class="url-text">https://www.nngroup.com/articles/response-times-3-important-limits/</p>
                 </div>
                 <div class="card-buttons">
-                    <button id="Information">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm1,15a1,1,0,0,1-2,0V11a1,1,0,0,1,2,0ZM12,8a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,12,8Z"/></svg>
-                    </button>
                     <button id="Edit">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 14-3 1 1-3 7-7 2 2z"/></svg>
@@ -86,5 +82,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Add bookmark modal -->
+     <div id="add-bookmark-modal" class="modal">
+        <div>
+            <label for=""></label>
+            <input type="text">
+        </div>
+     </div>
+
 </body>
 </html>

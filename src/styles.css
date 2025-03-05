@@ -94,6 +94,7 @@ button {
 li {
     margin-bottom: 15px;
     font-weight: 400;
+    cursor: pointer;
 }
 
 #main-content {

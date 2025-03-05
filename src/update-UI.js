@@ -11,9 +11,9 @@ function toggleHeartIcon(heartIcon) {
     heartIcon.classList.toggle('heart-inactive');
 }
 
-function closeModal(modal) {
+function toggleModal(modal) {
     modal.classList.toggle('hidden');
 }
 
 
-export { toggleSubcatVisibility, toggleHeartIcon, closeModal }
+export { toggleSubcatVisibility, toggleHeartIcon, toggleModal }

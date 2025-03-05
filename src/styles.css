@@ -22,6 +22,7 @@ body {
     display: flex;
 }
 
+
 #sidebar {
     background-color: rgb(255, 255, 255);
     width: 340px;
@@ -176,7 +177,6 @@ svg:hover, .heart-inactive {
 
 
 .modal-background {
-    /* display: none; */
     background-color: white;
     background-color: rgba(129, 129, 129, 0.251);
     width: 100%;
@@ -193,14 +193,14 @@ svg:hover, .heart-inactive {
     background-color: white;
     width: 500px;
     border-radius: 10px;
-}
-
-#add-bookmark-form {
-    height: 360px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#add-bookmark-form {
+    height: 360px;
 }
 
 form > h1 {
@@ -244,15 +244,23 @@ input {
 
 .close-btn-container {
     display: flex;
+    align-self: flex-start;
 }
 
 .close-btn {
     background-color: transparent;
     border: none;
-    margin: 12px 0 0 -25px;
+    margin: 12px 0 0 20px;
     font-size: 1.1rem;
+}
+
+
+#delete-message-container {
+    padding: 30px;
+    margin-bottom: -20px;
 }
 
 .hidden {
     display: none;
 }
+

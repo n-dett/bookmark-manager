@@ -91,8 +91,8 @@
         </div>
     </div>
 
-    <!-- Add bookmark modal -->
-     <div class="modal-background hidden" id="add-bookmark-modal">
+    <!-- Add Bookmark modal -->
+     <div class="modal-background hidden" id="add-bookmark-modal-bgd">
          <form id="add-bookmark-form" class="modal">
             <div class="close-btn-container">
                 <button type="button" class="close-btn">&#10005</button>
@@ -106,9 +106,43 @@
                 <label for="new-bookmark-url">URL</label>
                 <input type="text" id="new-bookmark-url">
             </div>
-            <button type="button" class="submit-form-btn">Add</button>
+            <button type="button" class="submit-form-btn" id="submit-new-bookmark">Add</button>
          </form>
      </div>
+
+    <!-- Edit Bookmark modal -->
+    <div class="modal-background hidden" id="edit-bookmark-modal-bgd">
+        <form id="add-bookmark-form" class="modal">
+           <div class="close-btn-container">
+               <button type="button" class="close-btn">&#10005</button>
+           </div>
+           <h1>Edit Bookmark</h1>
+           <div>
+               <label for="edit-bookmark-name">Bookmark Name</label>
+               <input type="text" id="edit-bookmark-name" maxlength="70">
+           </div>
+           <div>
+               <label for="edit-bookmark-url">URL</label>
+               <input type="text" id="edit-bookmark-url">
+           </div>
+           <button type="button" class="submit-form-btn" id="submit-edit-bookmark">Add</button>
+        </form>
+    </div>
+
+    <!-- Delete Bookmark confirmation modal -->
+    <div class="modal-background" id="delete-bookmark-modal-bgd">
+        <div id="delete-bookmark-modal" class="modal">
+           <div class="close-btn-container">
+               <button type="button" class="close-btn">&#10005</button>
+           </div>
+           <div id="delete-message-container">
+               <h3 id="delete-bookmark-message">Are you sure you want to delete the bookmark for The Bookmark Name Here?</h3>
+           </div>
+           <div>
+           </div>
+           <button type="button" class="submit-form-btn" id="submit-edit-bookmark">Delete</button>
+        </div>
+    </div>
 
 </body>
 </html>

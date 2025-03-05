@@ -54,7 +54,7 @@ function closeModalListener() {
 
 function openAddBookmarkListener() {
     const addBookmarkBtn = document.getElementById('add-bookmark');
-    const modal = document.getElementById('add-bookmark-modal');
+    const modal = document.getElementById('add-bookmark-modal-bgd');
     addBookmarkBtn.addEventListener('click', function() {
         toggleModal(modal);
     })

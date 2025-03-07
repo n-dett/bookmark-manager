@@ -1,5 +1,11 @@
 import "./styles.css";
-import { accordionListener, closeModalListener, heartIconListener, openAddBookmarkListener } from "./event-listeners";
+import { 
+    accordionListener, 
+    closeModalListener, 
+    heartIconListener, 
+    openAddBookmarkListener, 
+    openDeleteModalListener
+} from "./event-listeners";
 
 // Add all event listeners
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,4 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
     heartIconListener();
     closeModalListener();
     openAddBookmarkListener();
+    openDeleteModalListener();
 })

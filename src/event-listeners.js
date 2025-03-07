@@ -61,6 +61,28 @@ function openAddBookmarkListener() {
 } 
 
 
+function openDeleteModalListener() {
+    // Add event to document so new buttons will have event 
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('.delete-btn');
+        // If target is button
+        if(button) {
+            // Prevent event bubbling to parent elements
+            const modal = document.getElementById('delete-bookmark-modal-bgd');
+            if(modal) {
+                toggleModal(modal);
+            }
+        }
+    })
+}
 
 
-export{ accordionListener, heartIconListener, closeModalListener, openAddBookmarkListener }
+
+
+export { 
+    accordionListener, 
+    heartIconListener, 
+    closeModalListener, 
+    openAddBookmarkListener,
+    openDeleteModalListener
+}

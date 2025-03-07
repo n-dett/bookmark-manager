@@ -187,6 +187,7 @@ svg:hover, .heart-inactive {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: -15px;
 }
 
 .modal {
@@ -253,7 +254,6 @@ input {
     margin: 12px 0 0 20px;
     font-size: 1.1rem;
 }
-
 
 #delete-message-container {
     padding: 30px;

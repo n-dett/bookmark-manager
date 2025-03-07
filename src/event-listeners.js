@@ -67,8 +67,22 @@ function openDeleteModalListener() {
         const button = e.target.closest('.delete-btn');
         // If target is button
         if(button) {
-            // Prevent event bubbling to parent elements
             const modal = document.getElementById('delete-bookmark-modal-bgd');
+            if(modal) {
+                toggleModal(modal);
+            }
+        }
+    })
+}
+
+
+function openEditModalListener() {
+    // Add event to document so new buttons will have event 
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('.edit-btn');
+        // If target is button
+        if(button) {
+            const modal = document.getElementById('edit-bookmark-modal-bgd');
             if(modal) {
                 toggleModal(modal);
             }
@@ -84,5 +98,6 @@ export {
     heartIconListener, 
     closeModalListener, 
     openAddBookmarkListener,
-    openDeleteModalListener
+    openDeleteModalListener,
+    openEditModalListener
 }

@@ -4,7 +4,8 @@ import {
     closeModalListener, 
     heartIconListener, 
     openAddBookmarkListener, 
-    openDeleteModalListener
+    openDeleteModalListener,
+    openEditModalListener
 } from "./event-listeners";
 
 // Add all event listeners
@@ -14,4 +15,5 @@ document.addEventListener("DOMContentLoaded", () => {
     closeModalListener();
     openAddBookmarkListener();
     openDeleteModalListener();
+    openEditModalListener();
 })

@@ -32,7 +32,13 @@
     <!-- Main Content -->
     <div id="main-content">
         <div id="main-content-header">
-            <h2 id="category-heading">School</h2>
+            <div id="category-container">
+                <button id="delete-category-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.707,12.293a1,1,0,1,1-1.414,1.414L12,13.414,9.707,15.707a1,1,0,0,1-1.414-1.414L10.586,12,8.293,9.707A1,1,0,0,1,9.707,8.293L12,10.586l2.293-2.293a1,1,0,0,1,1.414,1.414L13.414,12Z"/></svg>
+                </button>
+                <h2 id="category-heading">School</h2>
+            </div>
             <button id="add-bookmark">Add Bookmark +</button>
         </div>
         <!-- Bookmark Cards -->
@@ -136,12 +142,27 @@
            <div class="close-btn-container">
                <button type="button" class="close-btn">&#10005</button>
            </div>
-           <div id="delete-message-container">
+           <div class="delete-message-container">
                <h3 id="delete-bookmark-message">Are you sure you want to delete the bookmark for The Bookmark Name Here?</h3>
            </div>
            <div>
            </div>
-           <button type="button" class="submit-form-btn" id="submit-edit-bookmark">Delete</button>
+           <button type="button" class="submit-form-btn" id="submit-delete-bookmark">Delete</button>
+        </div>
+    </div>
+
+    <!-- Delete Category confirmation modal -->
+    <div class="modal-background hidden" id="delete-category-modal-bgd">
+        <div id="delete-category-modal" class="modal">
+            <div class="close-btn-container">
+                <button type="button" class="close-btn">&#10005</button>
+            </div>
+            <div class="delete-message-container">
+                <h3 id="delete-category-message">Are you sure you want to delete the category for Category Name?</h3>
+            </div>
+            <div>
+            </div>
+            <button type="button" class="submit-form-btn" id="submit-delete-category">Delete</button>
         </div>
     </div>
 

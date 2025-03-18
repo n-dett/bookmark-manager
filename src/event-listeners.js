@@ -41,52 +41,22 @@ function closeModalListener() {
 }
 
 
-function openAddBookmarkListener() {
-    const addBookmarkBtn = document.getElementById('add-bookmark');
-    const modal = document.getElementById('add-bookmark-modal-bgd');
-    addBookmarkBtn.addEventListener('click', function() {
-        toggleModal(modal);
-    })
-} 
-
-
-function openDeleteModalListener() {
-    // Add event to document so new buttons will have event 
+function openModalListener(btnClassOrID, modalId) {
     document.addEventListener('click', function(e) {
-        const button = e.target.closest('.delete-btn');
-        // If target is button
-        if(button) {
-            const modal = document.getElementById('delete-bookmark-modal-bgd');
-            if(modal) {
+        const button = e.target.closest(btnClassOrID);
+        if (button) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
                 toggleModal(modal);
             }
         }
-    })
+    });
 }
-
-
-function openEditModalListener() {
-    // Add event to document so new buttons will have event 
-    document.addEventListener('click', function(e) {
-        const button = e.target.closest('.edit-btn');
-        // If target is button
-        if(button) {
-            const modal = document.getElementById('edit-bookmark-modal-bgd');
-            if(modal) {
-                toggleModal(modal);
-            }
-        }
-    })
-}
-
-
 
 
 export { 
     accordionListener, 
     heartIconListener, 
     closeModalListener, 
-    openAddBookmarkListener,
-    openDeleteModalListener,
-    openEditModalListener
+    openModalListener
 }

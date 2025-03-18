@@ -120,35 +120,41 @@ h2 {
 #bookmarks-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, 1.5fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1.5fr));
     gap: 10px;
 }
 
 .bookmark-card {
     background-color: white;
     border-radius: 5px;
-    height: 150px;
+    height: 115px;
     transition: background-color .3s;
     cursor: pointer;
-    padding: 10px 15px 15px 15px;
+    padding: 17px 17px 17px 17px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .bookmark-card:hover {
     background-color: rgb(255, 255, 212);
 }
 
+.card-text {
+    max-width: 80%;
+}
+
 .card-text > h3 {
     font-weight: 700;
-    margin-bottom: 5px;
+    margin: 0 0 7px 0;
+    padding: 0;
+
 }
 
 .url-text {
     font-weight: 400;
     font-size: .9rem;
-    max-width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

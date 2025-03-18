@@ -3,7 +3,6 @@ import {
     accordionListener, 
     closeModalListener, 
     heartIconListener,
-    //openAddBookmarkListener,
     openModalListener
 } from "./event-listeners";
 
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     accordionListener();
     heartIconListener();
     closeModalListener();
-    //openAddBookmarkListener();
     openModalListener('#add-bookmark', 'add-bookmark-modal-bgd');
     openModalListener('.delete-btn', 'delete-bookmark-modal-bgd');
     openModalListener('.edit-btn', 'edit-bookmark-modal-bgd');

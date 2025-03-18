@@ -27,22 +27,11 @@ function heartIconListener() {
     });
 }
 
-// function closeModalListener() {
-//     const closeBtns = document.querySelectorAll('.close-btn');
-//     closeBtns.forEach(btn => {
-//         const modal = btn.closest('.modal-background');
-//         btn.addEventListener("click", function(e) {
-//             e.preventDefault();
-//             toggleModal(modal);
-//         })
-//     })
-// }
-
 
 function closeModalListener() {
     // Add event to document so new buttons will have event 
     document.addEventListener('click', function(e) {
-        if(e.target.classList.contains('close-btn')) {
+        if(e.target.classList.contains('close-btn') || e.target.classList.contains('submit-form-btn')) {
             const modal = e.target.closest('.modal-background');
             if(modal) {
                 toggleModal(modal);

@@ -160,9 +160,9 @@ h2 {
     overflow: hidden;
 }
 
-.card-buttons {
+/* .card-buttons {
     margin-top: 15px;
-}
+} */
 
 .card-buttons > button, #delete-category-btn {
     width: 22px;

@@ -72,7 +72,6 @@ function cardClickListener() {
         const card = e.target.closest('.bookmark-card');
         if(card) {
             const url = card.querySelector('h3 a');
-            console.log("Clicked!");
             
             // Check if user has text selected
             const textSelected = window.getSelection().toString();

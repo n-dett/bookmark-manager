@@ -9,7 +9,7 @@
     <!-- Sidebar Navigation -->
     <div id="sidebar">
         <h1>Bookmark Manager</h1>
-        <button id="add-category">Add Category +</button>
+        <button id="add-category-btn">Add Category +</button>
         <nav>
             <button class="category-btn category-name">All</button>
             <button class="category-btn category-name">Favorites</button>
@@ -17,10 +17,10 @@
                 <span class="category-name">Category 1</span>
                 <span class="caret">&#9656</span>
             </button>
-            <ul class="subcat-list hidden">
-                <li class="subcat">Subcategory 1</li>
-                <li class="subcat">Subcategory 2</li>
-                <li class="subcat">Subcategory 3</li>
+            <ul class="subcategory-list hidden">
+                <li class="subcategory">Subcategory 1</li>
+                <li class="subcategory">Subcategory 2</li>
+                <li class="subcategory">Subcategory 3</li>
             </ul>
             <button class="category-btn">
                 <span class="category-name">Category 2</span>
@@ -39,7 +39,7 @@
                 </button>
                 <h2 id="category-heading">School</h2>
             </div>
-            <div id="add-subcat-bookmark-container">
+            <div id="add-subcategory-bookmark-container">
                 <button id="add-subcategory-btn">Add Subcategory +</button>
                 <button id="add-bookmark-btn">Add Bookmark +</button>
             </div>
@@ -202,6 +202,36 @@
             </div>
             <button type="button" class="submit-form-btn" id="submit-delete-category">Delete</button>
         </div>
+    </div>
+
+    <!-- Add Category modal -->
+    <div class="modal-background hidden" id="add-category-modal-bgd">
+        <form id="add-category-form" class="modal">
+            <div class="close-btn-container">
+                <button type="button" class="close-btn">&#10005</button>
+            </div>
+            <h1>Add Category</h1>
+            <div>
+                <label for="new-category-name">Category Name</label>
+                <input type="text" id="new-category-name" maxlength="70">
+            </div>
+            <button type="button" class="submit-form-btn" id="submit-new-category">Add</button>
+        </form>
+    </div>
+
+    <!-- Add Subcategory modal -->
+    <div class="modal-background hidden" id="add-subcategory-modal-bgd">
+        <form id="add-subcategory-form" class="modal">
+            <div class="close-btn-container">
+                <button type="button" class="close-btn">&#10005</button>
+            </div>
+            <h1>Add Subcategory</h1>
+            <div>
+                <label for="new-subcategory-name">Subcategory Name</label>
+                <input type="text" id="new-subcategory-name" maxlength="70">
+            </div>
+            <button type="button" class="submit-form-btn" id="submit-new-subcategory">Add</button>
+        </form>
     </div>
 
 </body>

@@ -55,7 +55,7 @@ button {
     cursor: pointer;
 }
 
-.category-btn, #add-category {
+.category-btn, #add-category-btn {
     margin: 0 0 10px 0;
 }
 
@@ -69,11 +69,11 @@ button {
     font-size: 1.3rem;
 }
 
-.subcat {
+.subcategory {
     margin: 0 0 10px 0
 }
 
-.category-btn, .subcat, #add-category, #add-bookmark-btn, #add-subcategory-btn {
+.category-btn, .subcategory, #add-category-btn, #add-bookmark-btn, #add-subcategory-btn {
     background-color: transparent;
     border: none;
     border-radius: 3px;
@@ -82,23 +82,23 @@ button {
     transition: background-color .3s;
 }
 
-.category-btn:hover, .subcat:hover, .category-btn.active {
+.category-btn:hover, .subcategory:hover, .category-btn.active {
     background-color: var(--light-gray);
 }
 
-#add-subcat-bookmark-container {
+#add-subcategory-bookmark-container {
     display: flex;
     gap: 15px;
 }
 
 
-#add-category {
+#add-category-btn {
     margin-top: 30px;
     font-size: 1rem;
 }
 
 
-.subcat-list {
+.subcategory-list {
     padding-left: 5px;
     list-style-type: none;
 }
@@ -133,7 +133,7 @@ h2 {
 #bookmarks-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1.5fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1.5fr));
     gap: 10px;
     padding-bottom: 15px;
 }

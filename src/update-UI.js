@@ -29,61 +29,40 @@ function displayCards() {
         // Create card
         const cardContainer = document.createElement("div");
         cardContainer.classList.add("bookmark-card");
-        cardContainer.setAttribute("data-id", index);
+        cardContainer.setAttribute("data-index", index);
 
-        // Add title
-        const bookTitle = document.createElement("h3");
-        bookTitle.innerText = book.title;
-        cardContainer.appendChild(bookTitle);
+        // Add card text container
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("card-text");
+        cardContainer.appendChild(textContainer);
 
-        // Add hr
-        const rule = document.createElement("hr");
-        cardContainer.appendChild(rule);
+        // Add h3 title container
+        const titleContainer = document.createElement("h3");
+        textContainer.appendChild(titleContainer);
 
-        // Add author
-        const authorContainer = document.createElement("div");
-        authorContainer.classList.add("author-container");
+        // Add title that links to url
+        const titleLink = document.createElement("a");
+        titleLink.textContent = bookmark.title;
+        titleLink.setAttribute('href', bookmark.url);
+        titleLink.setAttribute('target', '_blank');
+        titleContainer.appendChild(titleLink);
 
-        const byline = document.createElement("p");
-        byline.innerText = `by ${book.author}`;
-        authorContainer.appendChild(byline);
-        cardContainer.appendChild(authorContainer);
+        // Add url text
+        const urlText = document.createElement("p");
+        urlText.textContent = bookmark.url;
+        textContainer.append(urlText);
 
-        // Add pages and finished
-        const pagesAndFinishedContainer = document.createElement("div");
-        pagesAndFinishedContainer.classList.add("pages-finished-container");
-        const pagesContainer = document.createElement("div");
-        pagesContainer.classList.add("pages-container");
-
-        const pageNum = document.createElement("p");
-        pageNum.innerText = `${book.pages} Pages`;
-        pagesContainer.appendChild(pageNum);
-        pagesAndFinishedContainer.appendChild(pagesContainer);
-
-        const bullet = document.createElement("p");
-        bullet.innerText = "•";
-        pagesAndFinishedContainer.appendChild(bullet);
-
-        const bookFinished = document.createElement("p");
-        bookFinished.classList.add("book-finished");
-        bookFinished.innerText = book.finished;
-        pagesAndFinishedContainer.appendChild(bookFinished);
-        cardContainer.appendChild(pagesAndFinishedContainer);
-
-        // Buttons
+        // Add buttons container
         const btnsContainer = document.createElement("div");
-        btnsContainer.classList.add("card-btns-container");
+        btnsContainer.classList.add("card-btns");
 
-        // Status Button
-        const statusBtn = document.createElement("button");
-        statusBtn.innerText = "Change Status";
-        statusBtn.classList.add("card-btns");
-        statusBtn.classList.add("status-btn");
-        btnsContainer.appendChild(statusBtn);
+/////////////////////
+
+
 
         // Remove Button
         const removeBtn = document.createElement("button");
-        removeBtn.innerText = "Remove";
+        removeBtn.textContent = "Remove";
         removeBtn.classList.add("card-btns");
         removeBtn.classList.add("remove-btns");
         btnsContainer.appendChild(removeBtn);

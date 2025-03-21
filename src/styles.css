@@ -192,7 +192,7 @@ svg {
     /* transition: fill .3s; */
 }
 
-.card-buttons > button > svg:hover, .heart-inactive {
+.card-buttons > button > svg:hover, .heart-active {
     fill: rgb(50, 50, 50);
 }
 

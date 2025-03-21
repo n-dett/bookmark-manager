@@ -7,13 +7,16 @@ function toggleSubcatVisibility(subCatList, caret) {
     }
 }
 
+
 function toggleHeartIcon(heartIcon) {
-    heartIcon.classList.toggle('heart-inactive');
+    heartIcon.classList.toggle('heart-active');
 }
+
 
 function toggleModal(modal) {
     modal.classList.toggle('hidden');
 }
+
 
 function displayCards() {
     // All cards container

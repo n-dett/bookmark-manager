@@ -5,8 +5,8 @@ class BookmarkStore {
         this.bookmarks = [];
     }
 
-    addBookmark(title, url, category, subcategory, favorite) {
-        const bookmark = new Bookmark(title, url, category, subcategory, favorite);
+    addBookmark(name, url, category, subcategory, favorite) {
+        const bookmark = new Bookmark(name, url, category, subcategory, favorite);
         this.bookmarks.push(bookmark);
     }
 
@@ -18,6 +18,23 @@ class BookmarkStore {
 }
 
 const bookmarkStore = new BookmarkStore();
+
+
+bookmarkStore.addBookmark(    
+    'Wikipedia', 
+    'https://www.wikipedia.org/',
+    null,
+    null,
+    false
+);
+
+bookmarkStore.addBookmark(
+    'Block Links: The Search for a Perfect Solution', 
+    'https://css-tricks.com/block-links-the-search-for-a-perfect-solution/',
+    null,
+    null,
+    false
+);
 
 
 export default bookmarkStore;

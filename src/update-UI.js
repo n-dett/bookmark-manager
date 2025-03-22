@@ -17,7 +17,7 @@ function toggleHeartIcon(heartIcon) {
 
 
 function toggleModal(modal) {
-    // if(!modal) return;
+    if(!modal) return;
     modal.classList.toggle('hidden');
 }
 
@@ -58,7 +58,7 @@ function appendCardText(bookmark, bmCardContainer) {
 
     // Add title that links to url
     const titleLink = document.createElement('a');
-    titleLink.textContent = bookmark.title;
+    titleLink.textContent = bookmark.name;
     titleLink.setAttribute('href', bookmark.url);
     titleLink.setAttribute('target', '_blank');
     titleContainer.appendChild(titleLink);

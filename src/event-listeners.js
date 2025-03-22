@@ -1,4 +1,5 @@
-import { toggleHeartIcon, toggleSubcatVisibility, closeModal, toggleModal } from "./update-UI";
+import { toggleHeartIcon, toggleSubcatVisibility, closeModal, toggleModal, displayCards } from "./update-UI";
+import bookmarkStore from "./bookmarkStore";
 
 function accordionListener() {
     const carets = document.querySelectorAll('.caret');
@@ -70,11 +71,27 @@ function openStaticModalListener(btnId, modalId) {
 }
 
 
-function addBookmarkBtnListener() {
+function addBookmarkListener() {
     const button = document.getElementById('submit-new-bookmark');
     if(button) {
         button.addEventListener('click', function() {
-            
+            // Get name
+            const nameInput = document.getElementById("new-bookmark-name");
+            const name = nameInput.value.trim();
+            // Get url
+            const urlInput = document.getElementById("new-bookmark-url");
+            const url = urlInput.value.trim();
+            // Get category
+            const categoryInput = document.getElementById("new-bookmark-category-dropdown");
+            const category = "None" ? null : categoryInput.value;
+            // Get subcategory
+            const subcategoryInput = document.getElementById("new-bookmark-subcategory-dropdown")
+            const subcategory = "None" ? null : subcategoryInput.value;
+            // Favorite is false by default
+            const favorite = false;
+
+            bookmarkStore.addBookmark(name, url, category, subcategory, favorite);
+            displayCards();
         })
     }
 }
@@ -112,5 +129,6 @@ export {
     closeModalListener, 
     openModalListener,
     openStaticModalListener,
-    cardClickListener
+    cardClickListener,
+    addBookmarkListener
 }

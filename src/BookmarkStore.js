@@ -4,12 +4,17 @@ class BookmarkStore {
     }
 
     addBookmark(bookmark) {
-        bookmarks.push(bookmark);
+        this.bookmarks.push(bookmark);
     }
 
     removeBookmark(bookmarkIndex) {
-        bookmarks.splice(bookmarkIndex, 1);
+        this.bookmarks.splice(bookmarkIndex, 1);
     }
 
     get allBookmarks() {return this.bookmarks}
 }
+
+const bookmarkStore = new BookmarkStore();
+
+
+export default bookmarkStore;

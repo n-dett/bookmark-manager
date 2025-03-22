@@ -7,8 +7,12 @@ import {
     openModalListener
 } from "./event-listeners";
 
+import { displayCards } from "./update-UI";
+
 // Add all event listeners
+
 document.addEventListener("DOMContentLoaded", () => {
+    displayCards();
     accordionListener();
     cardClickListener();
     heartIconListener();

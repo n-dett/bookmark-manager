@@ -185,10 +185,15 @@ h2 {
     border: none;
 }
 
+.card-btns > button {
+    margin-left: 5px;
+}
+
 svg {
     width: 100%;
     display: inline-block;
     fill: rgb(160, 160, 160);
+    height: 22px;
     /* transition: fill .3s; */
 }
 

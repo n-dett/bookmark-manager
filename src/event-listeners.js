@@ -129,9 +129,15 @@ function addBookmarkListener() {
 
 
 function deleteBookmarkListener() {
-    const button = document.getElementById("submit-delete-bookmark");
-    button.addEventListener('click', function(e) {
+    // Add listener to all card delete buttons via document
 
+    // Track which card was clicked
+    const card = e.target.closest('.bookmark-card');
+
+    // Add listener to confirm delete button
+    const confirmDeleteButton = document.getElementById("submit-delete-bookmark");
+    confirmDeleteButton.addEventListener('click', function(e) {
+        
     })
 }
 

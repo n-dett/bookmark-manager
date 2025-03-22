@@ -123,4 +123,9 @@ function appendCardButtons(bmCardContainer) {
 }
 
 
+function displayCategories() {
+    
+}
+
+
 export { toggleSubcatVisibility, toggleHeartIcon, toggleModal, displayCards }

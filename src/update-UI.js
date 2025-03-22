@@ -17,6 +17,7 @@ function toggleHeartIcon(heartIcon) {
 
 
 function toggleModal(modal) {
+    // if(!modal) return;
     modal.classList.toggle('hidden');
 }
 

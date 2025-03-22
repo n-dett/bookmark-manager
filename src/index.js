@@ -4,7 +4,8 @@ import {
     cardClickListener, 
     closeModalListener, 
     heartIconListener,
-    openModalListener
+    openModalListener,
+    openStaticModalListener
 } from "./event-listeners";
 
 import { displayCards } from "./update-UI";
@@ -13,14 +14,14 @@ import { displayCards } from "./update-UI";
 
 document.addEventListener("DOMContentLoaded", () => {
     displayCards();
+    heartIconListener();
     accordionListener();
     cardClickListener();
-    heartIconListener();
     closeModalListener();
-    openModalListener('#add-bookmark-btn', 'add-bookmark-modal-bgd');
     openModalListener('.delete-btn', 'delete-bookmark-modal-bgd');
     openModalListener('.edit-btn', 'edit-bookmark-modal-bgd');
-    openModalListener('#delete-category-btn', 'delete-category-modal-bgd');
-    openModalListener('#add-category-btn', 'add-category-modal-bgd');
-    openModalListener('#add-subcategory-btn', 'add-subcategory-modal-bgd');
+    openStaticModalListener('delete-category-btn', 'delete-category-modal-bgd');
+    openStaticModalListener('add-category-btn', 'add-category-modal-bgd');
+    openStaticModalListener('add-subcategory-btn', 'add-subcategory-modal-bgd');
+    openStaticModalListener('add-bookmark-btn', 'add-bookmark-modal-bgd');
 })

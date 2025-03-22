@@ -22,7 +22,7 @@ function heartIconListener() {
     heartBtns.forEach(heartBtn => {
         const heartIcon= heartBtn.firstElementChild;
         heartBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             toggleHeartIcon(heartIcon);
         })
     });
@@ -43,9 +43,9 @@ function closeModalListener() {
 }
 
 
-function openModalListener(btnClassOrID, modalId) {
-    document.addEventListener('click', function(e) {
-        const button = e.target.closest(btnClassOrID);
+function openModalListener(btnClass, modalId) {
+    document.body.addEventListener('click', function(e) {
+        const button = e.target.closest(btnClass);
         if(button) {
             e.stopPropagation();
             const modal = document.getElementById(modalId);
@@ -54,6 +54,19 @@ function openModalListener(btnClassOrID, modalId) {
             }
         }
     });
+}
+
+
+function openStaticModalListener(btnId, modalId) {
+    const button = document.getElementById(btnId);
+    if(button) {
+        button.addEventListener('click', function(e) {
+            const modal = document.getElementById(modalId);
+            if(modal) {
+                toggleModal(modal);
+            }
+        })
+    }
 }
 
 
@@ -88,5 +101,6 @@ export {
     heartIconListener, 
     closeModalListener, 
     openModalListener,
+    openStaticModalListener,
     cardClickListener
 }

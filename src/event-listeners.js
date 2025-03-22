@@ -71,32 +71,6 @@ function openStaticModalListener(btnId, modalId) {
 }
 
 
-function addBookmarkListener() {
-    const button = document.getElementById('submit-new-bookmark');
-    if(button) {
-        button.addEventListener('click', function() {
-            // Get name
-            const nameInput = document.getElementById("new-bookmark-name");
-            const name = nameInput.value.trim();
-            // Get url
-            const urlInput = document.getElementById("new-bookmark-url");
-            const url = urlInput.value.trim();
-            // Get category
-            const categoryInput = document.getElementById("new-bookmark-category-dropdown");
-            const category = "None" ? null : categoryInput.value;
-            // Get subcategory
-            const subcategoryInput = document.getElementById("new-bookmark-subcategory-dropdown")
-            const subcategory = "None" ? null : subcategoryInput.value;
-            // Favorite is false by default
-            const favorite = false;
-
-            bookmarkStore.addBookmark(name, url, category, subcategory, favorite);
-            displayCards();
-        })
-    }
-}
-
-
 /* 
     Adapted from Block Links: The Search for a Perfect Solution
     https://css-tricks.com/block-links-the-search-for-a-perfect-solution/#method-4-sprinkle-javascript-on-the-second-method
@@ -119,6 +93,45 @@ function cardClickListener() {
                 url.click();
             }
         }
+    })
+}
+
+
+function addBookmarkListener() {
+    const button = document.getElementById('submit-new-bookmark');
+    if(button) {
+        button.addEventListener('click', function() {
+            // Get name
+            const nameInput = document.getElementById("new-bookmark-name");
+            const name = nameInput.value.trim();
+            // Get url
+            const urlInput = document.getElementById("new-bookmark-url");
+            const url = urlInput.value.trim();
+            // Get category
+            const categoryInput = document.getElementById("new-bookmark-category-dropdown");
+            const category = "None" ? null : categoryInput.value;
+            // Get subcategory
+            const subcategoryInput = document.getElementById("new-bookmark-subcategory-dropdown")
+            const subcategory = "None" ? null : subcategoryInput.value;
+            // Favorite is false by default
+            const favorite = false;
+
+            bookmarkStore.addBookmark(name, url, category, subcategory, favorite);
+            displayCards();
+
+            nameInput.value = "";
+            urlInput.value = "";
+            categoryInput.value = "";
+            subcategoryInput.value = "";
+        })
+    }
+}
+
+
+function deleteBookmarkListener() {
+    const button = document.getElementById("submit-delete-bookmark");
+    button.addEventListener('click', function(e) {
+
     })
 }
 

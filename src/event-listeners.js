@@ -70,6 +70,16 @@ function openStaticModalListener(btnId, modalId) {
 }
 
 
+function addBookmarkBtnListener() {
+    const button = document.getElementById('submit-new-bookmark');
+    if(button) {
+        button.addEventListener('click', function() {
+            
+        })
+    }
+}
+
+
 /* 
     Adapted from Block Links: The Search for a Perfect Solution
     https://css-tricks.com/block-links-the-search-for-a-perfect-solution/#method-4-sprinkle-javascript-on-the-second-method

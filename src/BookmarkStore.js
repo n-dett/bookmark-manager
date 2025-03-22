@@ -1,9 +1,12 @@
+import { Bookmark } from "./bookmark";
+
 class BookmarkStore {
     constructor() {
         this.bookmarks = [];
     }
 
-    addBookmark(bookmark) {
+    addBookmark(title, url, category, subcategory, favorite) {
+        const bookmark = new Bookmark(title, url, category, subcategory, favorite);
         this.bookmarks.push(bookmark);
     }
 

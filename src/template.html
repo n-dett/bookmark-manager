@@ -37,7 +37,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.707,12.293a1,1,0,1,1-1.414,1.414L12,13.414,9.707,15.707a1,1,0,0,1-1.414-1.414L10.586,12,8.293,9.707A1,1,0,0,1,9.707,8.293L12,10.586l2.293-2.293a1,1,0,0,1,1.414,1.414L13.414,12Z"/></svg>
                 </button>
-                <h2 id="category-heading">Favorites</h2>
+                <h2 id="category-heading">All</h2>
             </div>
             <div id="add-subcategory-bookmark-container">
                 <button id="add-subcategory-btn">Add Subcategory +</button>
@@ -90,6 +90,18 @@
                 <label for="new-bookmark-url">URL</label>
                 <input type="text" id="new-bookmark-url">
             </div>
+            <div>
+                <label for="new-bookmark-category-dropdown">Category</label>
+                <select name="new-bookmark-category-dropdown" id="new-bookmark-category-dropdown" class="categories">
+                    <option value="">None</option>
+                </select>
+            </div>
+            <div>
+                <label for="new-bookmark-subcategory-dropdown">Subcategory</label>
+                <select name="new-bookmark-subcategory-dropdown" id="new-bookmark-subcategory-dropdown" class="subcategories">
+                    <option value="">None</option>
+                </select>
+            </div>
             <button type="button" class="submit-form-btn" id="submit-new-bookmark">Add</button>
          </form>
      </div>
@@ -109,6 +121,18 @@
                <label for="edit-bookmark-url">URL</label>
                <input type="text" id="edit-bookmark-url">
            </div>
+            <div>
+                <label for="edit-bookmark-category-dropdown">Category</label>
+                <select name="edit-bookmark-category-dropdown" id="new-bookmark-category-dropdown" class="categories">
+                    <option value="">None</option>
+                </select>
+            </div>
+            <div>
+                <label for="new-bookmark-subcategory-dropdown">Subcategory</label>
+                <select name="new-bookmark-subcategory-dropdown" id="new-bookmark-subcategory-dropdown" class="subcategories">
+                    <option value="">None</option>
+                </select>
+            </div>
            <button type="button" class="submit-form-btn" id="submit-edit-bookmark">Done</button>
         </form>
     </div>
@@ -165,6 +189,12 @@
                 <button type="button" class="close-btn">&#10005</button>
             </div>
             <h1>Add Subcategory</h1>
+            <div>
+                <label for="add-subcategory-category-dropdown">Category</label>
+                <select name="add-subcategory-category-dropdown" id="add-subcategory-category-dropdown" class="categories">
+                    <option value=""></option>
+                </select>
+            </div>
             <div>
                 <label for="new-subcategory-name">Subcategory Name</label>
                 <input type="text" id="new-subcategory-name" maxlength="70">

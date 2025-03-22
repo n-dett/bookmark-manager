@@ -92,7 +92,7 @@ function appendCardButtons(bmCardContainer) {
 
     // Edit button
     const editBtn = document.createElement('button');
-    heartBtn.classList.add('edit-btn');
+    editBtn.classList.add('edit-btn');
     // Edit svg
     const editSvg = document.createElementNS(svgNamespace, 'svg');
     editSvg.setAttribute('viewbox', '0 0 24 24');

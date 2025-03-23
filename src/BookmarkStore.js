@@ -19,7 +19,6 @@ class BookmarkStore {
 
 const bookmarkStore = new BookmarkStore();
 
-
 bookmarkStore.addBookmark(    
     'Wikipedia', 
     'https://www.wikipedia.org/',

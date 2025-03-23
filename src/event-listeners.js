@@ -129,7 +129,7 @@ function addBookmarkListener() {
             const favorite = false;
 
             bookmarkStore.addBookmark(name, url, category, subcategory, favorite);
-            displayCards();
+            displayCards(bookmarkStore.allBookmarks);
 
             nameInput.value = "";
             urlInput.value = "";
@@ -162,7 +162,7 @@ function deleteBookmarkListener() {
             console.log(`selected card index: ${selectedCard.dataset.index}`);
             console.log(`removing index: ${index}`);
             bookmarkStore.removeBookmark(index);
-            displayCards();
+            displayCards(bookmarkStore.allBookmarks);
             selectedCard = null;
         }
     })
@@ -175,9 +175,6 @@ function addCategoryListener() {
     button.addEventListener('click', function(e) {
         const categoryName = categoryInput.value;
         new Category(categoryName);
-        Category.categoriesArr.forEach(category =>
-            console.log(category.name)
-        );
         displayCategoryBtns(Category.categoriesArr);
     })
 }

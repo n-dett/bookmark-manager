@@ -24,7 +24,7 @@ function toggleModal(modal) {
 }
 
 
-function displayCards() {
+function displayCards(bookmarksArr) {
     console.log(bookmarkStore.allBookmarks);
 
     // All cards container
@@ -33,7 +33,7 @@ function displayCards() {
     // Clear cards
     cardsContainer.innerHTML = '';
 
-    bookmarkStore.allBookmarks.forEach((bookmark, index) => {
+    bookmarksArr.forEach((bookmark, index) => {
         // Create card
         const bmCardContainer = document.createElement('div');
         bmCardContainer.classList.add('bookmark-card');
@@ -177,8 +177,9 @@ function displayCategoryBtns(categoriesArr) {
 }
 
 
-function fillCategoryDropdowns() {
+function populateCategoryDropdowns() {
     // Add Bookmark dropdowns
+    
 
     // Edit Bookmark dropdowns
 
@@ -187,7 +188,7 @@ function fillCategoryDropdowns() {
 
 
 function renderUI() {
-    displayCards();
+    displayCards(bookmarkStore.allBookmarks);
     displayCategoryBtns(Category.categoriesArr);
 }
 

@@ -1,5 +1,6 @@
-import { toggleHeartIcon, toggleSubcatVisibility, closeModal, toggleModal, displayCards } from "./update-UI";
+import { toggleHeartIcon, toggleSubcatVisibility, displayCategoryBtns, toggleModal, displayCards } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
+import { Category } from "./Category";
 
 function accordionListener() {
     // Add event to document so new buttons will have event 
@@ -168,6 +169,20 @@ function deleteBookmarkListener() {
 }
 
 
+function addCategoryListener() {
+    const button = document.getElementById('submit-new-category');
+    const categoryInput = document.getElementById('new-category-name');
+    button.addEventListener('click', function(e) {
+        const categoryName = categoryInput.value;
+        new Category(categoryName);
+        Category.categoriesArr.forEach(category =>
+            console.log(category.name)
+        );
+        displayCategoryBtns(Category.categoriesArr);
+    })
+}
+
+
 export { 
     accordionListener, 
     heartIconListener, 
@@ -176,5 +191,6 @@ export {
     openStaticModalListener,
     cardClickListener,
     addBookmarkListener,
-    deleteBookmarkListener
+    deleteBookmarkListener,
+    addCategoryListener
 }

@@ -6,7 +6,8 @@ import {
     heartIconListener,
     openModalListener,
     openStaticModalListener,
-    addBookmarkListener
+    addBookmarkListener,
+    deleteBookmarkListener
 } from "./event-listeners";
 
 import { displayCards } from "./update-UI";
@@ -14,8 +15,9 @@ import { displayCards } from "./update-UI";
 // Add all event listeners
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Card listeners
     displayCards();
+    
+    // Card element listeners
     heartIconListener();
     cardClickListener();
 
@@ -33,4 +35,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // CRUD listeners
     addBookmarkListener();
+    deleteBookmarkListener();
 })

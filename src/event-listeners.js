@@ -130,15 +130,25 @@ function addBookmarkListener() {
 
 
 function deleteBookmarkListener() {
-    // Add listener to all card delete buttons via document
-
+    // Add listener to all card delete buttons
     // Track which card was clicked
-    const card = e.target.closest('.bookmark-card');
+    let card = null;
+    document.body.addEventListener('click', function(e) {
+        const cardDeleteButton = e.target.closest('.delete-btn');
+        if(cardDeleteButton) {
+            card = e.target.closest('.bookmark-card');
+        }
+    });
 
     // Add listener to confirm delete button
     const confirmDeleteButton = document.getElementById("submit-delete-bookmark");
     confirmDeleteButton.addEventListener('click', function(e) {
-        
+        if(card) {
+            // Delete the card
+            const index = parseInt(card.dataset.dataIndex);
+            bookmarkStore.removeBookmark(index);
+            displayCards();
+        }
     })
 }
 
@@ -150,5 +160,6 @@ export {
     openModalListener,
     openStaticModalListener,
     cardClickListener,
-    addBookmarkListener
+    addBookmarkListener,
+    deleteBookmarkListener
 }

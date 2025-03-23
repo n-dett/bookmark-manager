@@ -1,19 +1,19 @@
 class Category {
     constructor(name) {
         this.name = name;
-        this.subcategories = [];
+        this.subcategoriesArr = [];
     }
 
     addSubcategory(subcategory) {
-        if(!this.subcategories.includes(subcategory)) {
-            this.subcategories.push(subcategory);
+        if(!this.subcategoriesArr.includes(subcategory)) {
+            this.subcategoriesArr.push(subcategory);
         }
     }
 
     deleteSubcategory(subcategory) {
-        const subcatIndex = this.subcategories.indexOf(subcategory);
+        const subcatIndex = this.subcategoriesArr.indexOf(subcategory);
         if(subcatIndex >= 0) {
-            this.subcategories.splice(subcatIndex, 1);
+            this.subcategoriesArr.splice(subcatIndex, 1);
         }
     }
 }

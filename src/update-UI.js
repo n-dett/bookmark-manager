@@ -1,5 +1,6 @@
 import bookmarkStore from "./bookmarkStore";
 import { Bookmark } from "./bookmark";
+import { heartIconListener } from "./event-listeners";
 
 function toggleSubcatVisibility(subCatList, caret) {
     subCatList.classList.toggle('hidden');
@@ -123,8 +124,16 @@ function appendCardButtons(bmCardContainer) {
 }
 
 
-function displayCategories() {
-    
+function displayCategoryBtns(categoriesArr) {
+    // Clear current dynamic buttons
+    const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
+    dynamicBtns.forEach(btn => btn.remove());
+
+    // Append categories
+    const categoryNav = document.getElementById('category-nav')
+    categoriesArr.forEach(category => {
+        
+    });
 }
 
 

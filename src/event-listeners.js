@@ -19,14 +19,15 @@ function accordionListener() {
 
 
 function heartIconListener() {
-    const heartBtns = document.querySelectorAll('.heart-btn');
-    heartBtns.forEach(heartBtn => {
-        const heartIcon= heartBtn.firstElementChild;
-        heartBtn.addEventListener('click', function(e) {
-            // e.stopPropagation();
+    // Add event to document so new buttons will have event 
+    document.addEventListener('click', function(e) {
+        if(e.target.closest('.heart-btn')) {
+            console.log('heart clicked!');
+            e.stopPropagation();
+            const heartIcon = e.target.closest('.heart-btn').firstElementChild;
             toggleHeartIcon(heartIcon);
-        })
-    });
+        }
+    })
 }
 
 

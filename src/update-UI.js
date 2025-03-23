@@ -124,40 +124,56 @@ function appendCardButtons(bmCardContainer) {
 }
 
 
-// function displayCategoryBtns(categoriesArr) {
-//     // Clear current dynamic buttons
-//     const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
-//     dynamicBtns.forEach(btn => btn.remove());
+function displayCategoryBtns(categoriesArr) {
+    // Clear current dynamic buttons
+    const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
+    dynamicBtns.forEach(btn => btn.remove());
 
-//     // Append categories
-//     const categoryNav = document.getElementById('category-nav')
+    // Append categories
+    const categoryNav = document.getElementById('category-nav')
 
-//     categoriesArr.forEach(category => {
-//         const categoryBtn = document.createElement('button');
-//         categoryBtn.classList.add('category-btn');
+    categoriesArr.forEach(category => {
+        // Create category buttons container
+        const categoryBtnsContainer = document.createElement('div');
+        categoryBtnsContainer.classList.add('category-btns-container');
+        categoryNav.appendChild(categoryBtnsContainer);
 
-//         const categoryText = document.createElement('span');
-//         categoryText.textContent = category.name;
+        // Create category button
+        const categoryBtn = document.createElement('button');
+        categoryBtn.classList.add('category-btn');
 
-//         categoryBtn.appendChild(categoryText);
-//         categoryNav.appendChild(categoryBtn);
+        const categoryText = document.createElement('span');
+        categoryText.classList.add('category-name');
+        categoryText.textContent = category.name;
 
-//         // If the category has subcategories
-//         if(category.subcategoriesArr.length) {
-//             const caret = document.createElement('span');
-//             caret.innerHTML= '&#9656';
-//             categoryBtn.appendChild(caret);
+        categoryBtn.appendChild(categoryText);
+        categoryBtnsContainer.appendChild(categoryBtn);
 
-//             const subcategoryList = document.createElement('ul');
-//             subcategoryList.classList.add('subcategory-list');
-//             subcategoryList.classList.add('hidden');
+        // If the category has subcategories
+        if(category.subcategoriesArr.length) {
+            // Add caret
+            const caret = document.createElement('span');
+            caret.classList.add('caret');
+            caret.innerHTML= '&#9656';
+            categoryBtn.appendChild(caret);
 
-//             category.subcategoriesArr.forEach(subcategory => {
-//                 const subcategoryBtn = 
-//             })
-//         }
-//     });
-// }
+            // Create subcategories list
+            const subcategoryList = document.createElement('ul');
+            subcategoryList.classList.add('subcategory-list');
+            subcategoryList.classList.add('hidden');
+
+            category.subcategoriesArr.forEach(subcategory => {
+                const subcategoryBtn = document.createElement('button');
+                subcategoryBtn.classList.add('subcategory-btn');
+                // subcategory is a string
+                subcategoryBtn.textContent = subcategory;
+                subcategoryList.appendChild(subcategoryBtn);
+            })
+
+            categoryBtnsContainer.appendChild(subcategoryList);
+        }
+    });
+}
 
 
-export { toggleSubcatVisibility, toggleHeartIcon, toggleModal, displayCards }
+export { toggleSubcatVisibility, toggleHeartIcon, toggleModal, displayCards, displayCategoryBtns }

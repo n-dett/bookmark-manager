@@ -1,7 +1,14 @@
 class Category {
+    static categoriesArr = [];
+
     constructor(name) {
         this._name = name;
         this._subcategoriesArr = [];
+        Category.categoriesArr.push(this);
+    }
+
+    static getAllCategories() {
+        return Category.categoriesArr;
     }
 
     addSubcategory(subcategory) {
@@ -20,3 +27,12 @@ class Category {
     get name() {return this._name;}
     get subcategoriesArr() {return this._subcategoriesArr;}
 }
+
+
+const schoolCategory = new Category("School");
+
+const designCategory = new Category("Design");
+designCategory.addSubcategory("Fonts");
+designCategory.addSubcategory("Inspiration");
+
+export { Category }

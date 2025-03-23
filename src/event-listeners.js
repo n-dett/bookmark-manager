@@ -2,19 +2,29 @@ import { toggleHeartIcon, toggleSubcatVisibility, closeModal, toggleModal, displ
 import bookmarkStore from "./bookmarkStore";
 
 function accordionListener() {
-    const carets = document.querySelectorAll('.caret');
-    carets.forEach(caret => {
-        caret.addEventListener('mousedown', function(e) {
+    // Add event to document so new buttons will have event 
+    document.addEventListener('click', function(e) {
+        const caret = e.target.closest('.caret');
+        if(caret) {
+            console.log(`caret: ${caret}`);
+            e.stopPropagation();
+
             const categoryBtn = caret.closest('.category-btn');
-            const subCatList = categoryBtn.nextElementSibling;
+            console.log(`categoryBtn: ${categoryBtn}`);
+
+
+            const subcatList = categoryBtn.nextElementSibling;
+
+            console.log(`subCatList: ${subcatList}`);
+
 
             // If there are no subcategories under the caret, don't add event listener
-            if(!subCatList) return;
+            if(!subcatList) return;
 
             // Toggle visibility of the subcategories
-            toggleSubcatVisibility(subCatList, caret);
-        })
-    });
+            toggleSubcatVisibility(subcatList, caret);
+        }
+    })
 }
 
 

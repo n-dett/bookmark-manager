@@ -31,8 +31,13 @@ class Category {
 
 const schoolCategory = new Category("School");
 
-const designCategory = new Category("Recipes");
-designCategory.addSubcategory("Lunch");
-designCategory.addSubcategory("Dinner");
+const recipesCategory = new Category("Recipes");
+recipesCategory.addSubcategory("Breakfast");
+recipesCategory.addSubcategory("Lunch");
+recipesCategory.addSubcategory("Dinner");
+
+const designCategory = new Category("Design");
+designCategory.addSubcategory("Fonts");
+designCategory.addSubcategory("Stock Photos");
 
 export { Category }

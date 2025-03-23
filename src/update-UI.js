@@ -178,13 +178,20 @@ function displayCategoryBtns(categoriesArr) {
 
 
 function populateCategoryDropdowns() {
-    // Add Bookmark dropdowns
-    
+    // Populate Add Bookmark dropdown
 
-    // Edit Bookmark dropdowns
 
-    // Add Subcategory dropdown
+    // Populate Edit Bookmark dropdowns
+
+
 }
+
+
+// function populateSubcategoryDropdown() {
+    // Populate Add Bookmark dropdown
+
+    // Populate Edit Bookmark dropdown
+// }
 
 
 function renderUI() {

@@ -149,9 +149,24 @@ function deleteBookmarkListener() {
         if(cardDeleteButton) {
             selectedCard = e.target.closest('.bookmark-card');
         }
+
+        // Add bookmark name to modal message
+        const selectedCardName = document.getElementById('delete-bookmark-name');
+        if (selectedCard) {
+            // Get the bookmark name element
+            const selectedCardName = document.getElementById('delete-bookmark-name');
+            const cardH3 = selectedCard.querySelector('h3');
+        
+            // Check if h3 element exists before updating the text content
+            if (cardH3 && selectedCardName) {
+                selectedCardName.textContent = cardH3.textContent;
+            }
+        }
     });
 
     
+
+
 
     // Add listener to confirm delete button
     const confirmDeleteButton = document.getElementById("submit-delete-bookmark");

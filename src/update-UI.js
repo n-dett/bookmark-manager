@@ -124,17 +124,40 @@ function appendCardButtons(bmCardContainer) {
 }
 
 
-function displayCategoryBtns(categoriesArr) {
-    // Clear current dynamic buttons
-    const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
-    dynamicBtns.forEach(btn => btn.remove());
+// function displayCategoryBtns(categoriesArr) {
+//     // Clear current dynamic buttons
+//     const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
+//     dynamicBtns.forEach(btn => btn.remove());
 
-    // Append categories
-    const categoryNav = document.getElementById('category-nav')
-    categoriesArr.forEach(category => {
-        
-    });
-}
+//     // Append categories
+//     const categoryNav = document.getElementById('category-nav')
+
+//     categoriesArr.forEach(category => {
+//         const categoryBtn = document.createElement('button');
+//         categoryBtn.classList.add('category-btn');
+
+//         const categoryText = document.createElement('span');
+//         categoryText.textContent = category.name;
+
+//         categoryBtn.appendChild(categoryText);
+//         categoryNav.appendChild(categoryBtn);
+
+//         // If the category has subcategories
+//         if(category.subcategoriesArr.length) {
+//             const caret = document.createElement('span');
+//             caret.innerHTML= '&#9656';
+//             categoryBtn.appendChild(caret);
+
+//             const subcategoryList = document.createElement('ul');
+//             subcategoryList.classList.add('subcategory-list');
+//             subcategoryList.classList.add('hidden');
+
+//             category.subcategoriesArr.forEach(subcategory => {
+//                 const subcategoryBtn = 
+//             })
+//         }
+//     });
+// }
 
 
 export { toggleSubcatVisibility, toggleHeartIcon, toggleModal, displayCards }

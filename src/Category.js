@@ -1,7 +1,7 @@
 class Category {
     constructor(name) {
-        this.name = name;
-        this.subcategoriesArr = [];
+        this._name = name;
+        this._subcategoriesArr = [];
     }
 
     addSubcategory(subcategory) {
@@ -11,9 +11,12 @@ class Category {
     }
 
     deleteSubcategory(subcategory) {
-        const subcatIndex = this.subcategoriesArr.indexOf(subcategory);
+        const subcatIndex = this._subcategoriesArr.indexOf(subcategory);
         if(subcatIndex >= 0) {
-            this.subcategoriesArr.splice(subcatIndex, 1);
+            this._subcategoriesArr.splice(subcatIndex, 1);
         }
     }
+
+    get name() {return this._name;}
+    get subcategoriesArr() {return this._subcategoriesArr;}
 }

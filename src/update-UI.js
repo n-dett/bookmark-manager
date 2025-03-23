@@ -1,6 +1,7 @@
 import bookmarkStore from "./bookmarkStore";
 import { Bookmark } from "./bookmark";
-import { heartIconListener } from "./event-listeners";
+import { Category } from "./Category";
+
 
 function toggleSubcatVisibility(subCatList, caret) {
     subCatList.classList.toggle('hidden');
@@ -36,7 +37,7 @@ function displayCards() {
         // Create card
         const bmCardContainer = document.createElement('div');
         bmCardContainer.classList.add('bookmark-card');
-        bmCardContainer.setAttribute('data-index', index);
+        bmCardContainer.setAttribute('data-index', `${index}`);
 
         appendCardText(bookmark, bmCardContainer);
         appendCardButtons(bmCardContainer);
@@ -176,4 +177,26 @@ function displayCategoryBtns(categoriesArr) {
 }
 
 
-export { toggleSubcatVisibility, toggleHeartIcon, toggleModal, displayCards, displayCategoryBtns }
+function fillCategoryDropdowns() {
+    // Add Bookmark dropdowns
+
+    // Edit Bookmark dropdowns
+
+    // Add Subcategory dropdown
+}
+
+
+function renderUI() {
+    displayCards();
+    displayCategoryBtns(Category.categoriesArr);
+}
+
+
+export { 
+    toggleSubcatVisibility, 
+    toggleHeartIcon, 
+    toggleModal, 
+    displayCards, 
+    displayCategoryBtns,
+    renderUI
+}

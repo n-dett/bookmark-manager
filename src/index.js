@@ -10,16 +10,15 @@ import {
     deleteBookmarkListener
 } from "./event-listeners";
 
-import { displayCards, displayCategoryBtns } from "./update-UI";
+import { renderUI } from "./update-UI";
 
-import { Category } from "./Category";
+// import { Category } from "./Category";
 
 // Add all event listeners
 
 document.addEventListener("DOMContentLoaded", () => {
     // Display dynamic elements
-    displayCards();
-    displayCategoryBtns(Category.categoriesArr);
+    renderUI();
     
     // Card element listeners
     heartIconListener();

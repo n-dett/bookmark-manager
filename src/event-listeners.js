@@ -142,22 +142,27 @@ function addBookmarkListener() {
 function deleteBookmarkListener() {
     // Add listener to all card delete buttons
     // Track which card was clicked
-    let card = null;
+    let selectedCard = null;
     document.body.addEventListener('click', function(e) {
         const cardDeleteButton = e.target.closest('.delete-btn');
         if(cardDeleteButton) {
-            card = e.target.closest('.bookmark-card');
+            selectedCard = e.target.closest('.bookmark-card');
         }
     });
+
+    
 
     // Add listener to confirm delete button
     const confirmDeleteButton = document.getElementById("submit-delete-bookmark");
     confirmDeleteButton.addEventListener('click', function(e) {
-        if(card) {
+        if(selectedCard) {
             // Delete the card
-            const index = parseInt(card.dataset.dataIndex);
+            const index = parseInt(selectedCard.dataset.index);
+            console.log(`selected card index: ${selectedCard.dataset.index}`);
+            console.log(`removing index: ${index}`);
             bookmarkStore.removeBookmark(index);
             displayCards();
+            selectedCard = null;
         }
     })
 }

@@ -45,6 +45,14 @@ bookmarkStore.addBookmark(
 );
 
 bookmarkStore.addBookmark(
+    'Unsplash', 
+    'https://unsplash.com/',
+    'Design',
+    'Stock Photos',
+    false
+);
+
+bookmarkStore.addBookmark(
     'Gentle Explanation of "this" in JavaScript', 
     'https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/',
     'JavaScript',
@@ -61,10 +69,26 @@ bookmarkStore.addBookmark(
 );
 
 bookmarkStore.addBookmark(
+    'Google Fonts', 
+    'https://fonts.google.com/',
+    'Design',
+    'Fonts',
+    false
+);
+
+bookmarkStore.addBookmark(
     'JavaScript error reference', 
     'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors',
     'JavaScript',
     null,
+    false
+);
+
+bookmarkStore.addBookmark(
+    'Font Squirrel', 
+    'https://www.fontsquirrel.com/',
+    'Design',
+    'Fonts',
     false
 );
 

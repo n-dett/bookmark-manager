@@ -8,7 +8,8 @@ import {
     openStaticModalListener,
     addBookmarkListener,
     deleteBookmarkListener,
-    addCategoryListener
+    addCategoryListener,
+    displayCategoryListener
 } from "./event-listeners";
 
 import { renderUI } from "./update-UI";
@@ -41,4 +42,5 @@ document.addEventListener("DOMContentLoaded", () => {
     addBookmarkListener();
     deleteBookmarkListener();
     addCategoryListener();
+    displayCategoryListener();
 })

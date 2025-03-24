@@ -11,6 +11,11 @@ class Category {
         return Category.categoriesArr;
     }
 
+    static removeCategory(categoryName) {
+        const categoryIndex = Category.categoriesArr.findIndex(category => category.name === categoryName);
+        Category.categoriesArr.splice(categoryIndex, 1);
+    }
+
     addSubcategory(subcategory) {
         if(!this.subcategoriesArr.includes(subcategory)) {
             this.subcategoriesArr.push(subcategory);
@@ -29,7 +34,7 @@ class Category {
 }
 
 
-const schoolCategory = new Category("School");
+const webDevCategory = new Category("Web Dev");
 
 const recipesCategory = new Category("Recipes");
 recipesCategory.addSubcategory("Breakfast");

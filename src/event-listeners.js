@@ -151,7 +151,6 @@ function deleteBookmarkListener() {
         }
 
         // Add bookmark name to modal message
-        const selectedCardName = document.getElementById('delete-bookmark-name');
         if (selectedCard) {
             // Get the bookmark name element
             const selectedCardName = document.getElementById('delete-bookmark-name');
@@ -195,6 +194,53 @@ function addCategoryListener() {
 }
 
 
+// function DeleteCategoryListener() {
+//     const button = document.getElementById('submit-delete-category');
+//     const categoryName = document.getElementById('category-heading').textContent;
+
+//     button.addEventListener('click', function(e) {
+//         // Remove category from array
+//         Category.removeCategory(categoryName);
+
+//         // Change category title
+
+//         // Display All cards
+//     })
+
+// }
+
+
+function displayCategoryListener() {
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.category-btn')) {
+            e.stopPropagation();
+            const category = e.target;
+            const categoryName = category.textContent;
+
+            // Change category heading
+            const categoryHeading = document.getElementById('category-heading');
+            categoryHeading.textContent = categoryName;
+
+            // Filter cards by category
+            if(categoryName === 'All') {
+                displayCards(bookmarkStore.allBookmarks);
+            } else {
+                
+                const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                    bookmark.category === categoryName
+            );
+
+            displayCards(filteredCards);
+        }
+            }
+
+    })
+}
+
+
+    // , .subcategory-btn') && !e.target.classList.contains('hidden')
+
+
 export { 
     accordionListener, 
     heartIconListener, 
@@ -204,5 +250,6 @@ export {
     cardClickListener,
     addBookmarkListener,
     deleteBookmarkListener,
-    addCategoryListener
+    addCategoryListener,
+    displayCategoryListener
 }

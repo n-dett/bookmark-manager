@@ -30,7 +30,7 @@ bookmarkStore.addBookmark(
 bookmarkStore.addBookmark(
     'Block Links: The Search for a Perfect Solution', 
     'https://css-tricks.com/block-links-the-search-for-a-perfect-solution/',
-    null,
+    'Web Dev',
     null,
     false
 );

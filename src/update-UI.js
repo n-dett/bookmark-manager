@@ -40,7 +40,7 @@ function displayCards(bookmarksArr) {
         bmCardContainer.setAttribute('data-index', `${index}`);
 
         appendCardText(bookmark, bmCardContainer);
-        appendCardButtons(bmCardContainer);
+        appendCardButtons(bookmark, bmCardContainer);
 
         cardsContainer.appendChild(bmCardContainer);
 
@@ -73,7 +73,7 @@ function appendCardText(bookmark, bmCardContainer) {
 }
 
 
-function appendCardButtons(bmCardContainer) {
+function appendCardButtons(bookmark, bmCardContainer) {
     // Add buttons container
     const btnsContainer = document.createElement('div');
     btnsContainer.classList.add('card-btns');
@@ -81,9 +81,13 @@ function appendCardButtons(bmCardContainer) {
     // Heart button
     const heartBtn = document.createElement('button');
     heartBtn.classList.add('heart-btn');
+    
     // Heart svg
     const svgNamespace = 'http://www.w3.org/2000/svg';
     const heartSvg = document.createElementNS(svgNamespace, 'svg');
+    if(bookmark.favorite) {
+        heartSvg.classList.add('heart-active');
+    }
     heartSvg.setAttribute('viewbox', '0 0 24 24');
     heartSvg.setAttribute('xmlns', svgNamespace);
     const heartPath = document.createElementNS(svgNamespace, "path");

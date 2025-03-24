@@ -33,7 +33,7 @@ function heartIconListener() {
             const heartIcon = e.target.closest('.heart-btn').firstElementChild;
             toggleHeartIcon(heartIcon);
 
-            
+            // Add favorite to bookmark object
             let selectedCard = e.target.closest('.bookmark-card');
             if(selectedCard) {
                 const index = parseInt(selectedCard.dataset.index);
@@ -43,6 +43,17 @@ function heartIconListener() {
                     bookmark.favorite = true;
                 } else {
                     bookmark.favorite = false;
+
+                    // If current display is Favorites, reload display     
+                    const categoryHeading = document.getElementById('category-heading');
+                    const categoryName = categoryHeading.textContent;
+                    if(categoryName === 'Favorites') {
+                        const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                            bookmark.favorite === true
+                        );
+        
+                        displayCards(filteredCards);
+                    }
                 }
                 
                 selectedCard = null;
@@ -251,6 +262,9 @@ function displayCategoryListener() {
 
 
     // , .subcategory-btn') && !e.target.classList.contains('hidden')
+
+
+
 
 
 export { 

@@ -11,13 +11,8 @@ function accordionListener() {
             e.stopPropagation();
 
             const categoryBtn = caret.closest('.category-btn');
-            console.log(`categoryBtn: ${categoryBtn}`);
-
 
             const subcatList = categoryBtn.nextElementSibling;
-
-            console.log(`subCatList: ${subcatList}`);
-
 
             // If there are no subcategories under the caret, don't add event listener
             if(!subcatList) return;
@@ -37,6 +32,22 @@ function heartIconListener() {
             e.stopPropagation();
             const heartIcon = e.target.closest('.heart-btn').firstElementChild;
             toggleHeartIcon(heartIcon);
+
+            
+            let selectedCard = e.target.closest('.bookmark-card');
+            if(selectedCard) {
+                const index = parseInt(selectedCard.dataset.index);
+                const bookmark = bookmarkStore.allBookmarks[index];
+
+                if(!bookmark.favorite) {
+                    bookmark.favorite = true;
+                } else {
+                    bookmark.favorite = false;
+                }
+                
+                selectedCard = null;
+            }
+            
         }
     })
 }
@@ -164,9 +175,6 @@ function deleteBookmarkListener() {
     });
 
     
-
-
-
     // Add listener to confirm delete button
     const confirmDeleteButton = document.getElementById("submit-delete-bookmark");
     confirmDeleteButton.addEventListener('click', function(e) {
@@ -224,16 +232,20 @@ function displayCategoryListener() {
             // Filter cards by category
             if(categoryName === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
+            } else if(categoryName === 'Favorites') {
+                const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                    bookmark.favorite === true
+                );
+
+                displayCards(filteredCards);
             } else {
-                
                 const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
                     bookmark.category === categoryName
-            );
+                );
 
-            displayCards(filteredCards);
-        }
+                displayCards(filteredCards);
             }
-
+        }
     })
 }
 

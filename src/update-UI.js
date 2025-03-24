@@ -33,11 +33,13 @@ function displayCards(bookmarksArr) {
     // Clear cards
     cardsContainer.innerHTML = '';
 
-    bookmarksArr.forEach((bookmark, index) => {
+    bookmarksArr.forEach((bookmark) => {
+        const bookmarkIndex = bookmarkStore.allBookmarks.findIndex(bm => bm === bookmark);
+
         // Create card
         const bmCardContainer = document.createElement('div');
         bmCardContainer.classList.add('bookmark-card');
-        bmCardContainer.setAttribute('data-index', `${index}`);
+        bmCardContainer.setAttribute('data-index', `${bookmarkIndex}`);
 
         appendCardText(bookmark, bmCardContainer);
         appendCardButtons(bookmark, bmCardContainer);

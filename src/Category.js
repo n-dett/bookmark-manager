@@ -34,12 +34,11 @@ class Category {
 }
 
 
-const webDevCategory = new Category("Web Dev");
+const webDevCategory = new Category("JavaScript");
 
 const recipesCategory = new Category("Recipes");
-recipesCategory.addSubcategory("Breakfast");
-recipesCategory.addSubcategory("Lunch");
 recipesCategory.addSubcategory("Dinner");
+recipesCategory.addSubcategory("Dessert");
 
 const designCategory = new Category("Design");
 designCategory.addSubcategory("Fonts");

@@ -27,13 +27,45 @@ bookmarkStore.addBookmark(
     false
 );
 
+
+bookmarkStore.addBookmark(    
+    'Glazed Lemon Cookies', 
+    'https://houseofnasheats.com/double-lemon-glazed-cookies/',
+    'Recipes',
+    'Dessert',
+    false
+);
+
 bookmarkStore.addBookmark(
     'Block Links: The Search for a Perfect Solution', 
     'https://css-tricks.com/block-links-the-search-for-a-perfect-solution/',
-    'Web Dev',
+    'JavaScript',
     null,
     false
 );
 
+bookmarkStore.addBookmark(
+    'Gentle Explanation of "this" in JavaScript', 
+    'https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/',
+    'JavaScript',
+    null,
+    false
+);
+
+bookmarkStore.addBookmark(    
+    'Easy Lentil Shepherd’s Pie (vegetarian)', 
+    'https://www.spendwithpennies.com/easy-lentil-shepherds-pie-vegetarian/',
+    'Recipes',
+    'Dinner',
+    false
+);
+
+bookmarkStore.addBookmark(
+    'JavaScript error reference', 
+    'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors',
+    'JavaScript',
+    null,
+    false
+);
 
 export default bookmarkStore;

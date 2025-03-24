@@ -33,7 +33,8 @@ function heartIconListener() {
             toggleHeartIcon(heartIcon);
 
             // Add favorite to bookmark object
-            let selectedCard = e.target.closest('.bookmark-card');
+            let selectedCard = e.target.parentElement.parentElement.parentElement.parentElement;
+            console.log('card:', selectedCard);
             if(selectedCard) {
                 const index = parseInt(selectedCard.dataset.index);
                 const bookmark = bookmarkStore.allBookmarks[index];
@@ -42,6 +43,7 @@ function heartIconListener() {
                     bookmark.favorite = true;
                 } else {
                     bookmark.favorite = false;
+                    
 
                     // If current display is Favorites, reload display     
                     const categoryHeading = document.getElementById('category-heading');

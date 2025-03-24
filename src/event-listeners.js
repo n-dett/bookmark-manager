@@ -11,7 +11,6 @@ function accordionListener() {
             e.stopPropagation();
 
             const categoryBtn = caret.closest('.category-btn');
-
             const subcatList = categoryBtn.nextElementSibling;
 
             // If there are no subcategories under the caret, don't add event listener
@@ -231,10 +230,14 @@ function addCategoryListener() {
 
 function displayCategoryListener() {
     document.addEventListener('click', function(e) {
-        if (e.target.closest('.category-btn')) {
+        if (e.target.closest('.category-btn') && !e.target.classList.contains('caret')) {
             e.stopPropagation();
             const category = e.target;
-            const categoryName = category.textContent;
+            let categoryName = category.textContent.trim();
+            // Remove caret
+            if(categoryName[categoryName.length - 1] === '▸') {
+                categoryName = categoryName.slice(0, -1);
+            }
 
             // Change category heading
             const categoryHeading = document.getElementById('category-heading');

@@ -226,6 +226,16 @@ function changeCategoryHeading(categoryName) {
 }
 
 
+function removeCategoryBtns(categoryBtns, categoryName) {
+    const categoryBtnsArr = Array.from(categoryBtns);
+    for(let btn of categoryBtnsArr) {
+        if(btn.textContent === categoryName) {
+            btn.remove();
+        }
+    }
+}
+
+
 export { 
     toggleSubcatVisibility, 
     toggleHeartIcon, 
@@ -234,5 +244,6 @@ export {
     displayCategoryBtns,
     renderUI,
     hideDeleteCategoryBtn,
-    changeCategoryHeading
+    changeCategoryHeading,
+    removeCategoryBtns
 }

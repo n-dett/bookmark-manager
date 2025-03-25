@@ -6,7 +6,8 @@ import {
     displayCards,
     hideDeleteCategoryBtn,
     changeCategoryHeading,
-    renderUI
+    renderUI,
+    removeCategoryBtns
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -222,36 +223,61 @@ function addCategoryListener() {
 
 
 function deleteCategoryListener() {
-    let categoryName = null;
-    const deleteCategoryBtn = document.addEventListener('click', function(e) {
+    const deleteCategoryBtn = document.getElementById('delete-category-btn');
+    let categoryName;
+    deleteCategoryBtn.addEventListener('click', function (e) {
         categoryName = document.getElementById('category-heading').textContent;
         const modalText = document.getElementById('delete-category-name');
-
         if(modalText && categoryName) {
             modalText.textContent = categoryName;
         }
+        console.log('is category?', isCategory(categoryName));
+        if(!isCategory(categoryName)) {
+            const modalCategoryText = document.getElementById('modal-message-category');
+            modalCategoryText.textContent = 'subcategory';
+        }
     })
 
+
     const confirmDeleteButton = document.getElementById('submit-delete-category');
-
     confirmDeleteButton.addEventListener('click', function(e) {
-        // Remove category from array
-        Category.removeCategory(categoryName);
 
-        // Remove category from nav
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        categoryBtns.forEach(categoryBtn => {
-            if(categoryBtn.textContent === categoryName) {
-                categoryBtn.remove();
+        // Check if heading was a category or subcategory
+        if(isCategory(categoryName)) {
+            // Remove category from array
+            Category.removeCategory(categoryName);
+
+            // Remove category from nav
+            const catgoryBtns = document.querySelectorAll('.category-btn');
+            removeCategoryBtns(catgoryBtns, categoryName);
+
+            // Delete all bookmarks from this category
+            for (let i = bookmarkStore.allBookmarks.length - 1; i >= 0; i--) {
+                if (bookmarkStore.allBookmarks[i].category === categoryName) {
+                    bookmarkStore.removeBookmark(i);
+                }
             }
-        })
+        } else {
+            // Heading is a subcategory
+            const parentCategory = findParentCategory(categoryName);
 
-        // Delete all bookmarks from this category
-        for (let i = bookmarkStore.allBookmarks.length - 1; i >= 0; i--) {
-            if (bookmarkStore.allBookmarks[i].category === categoryName) {
-                bookmarkStore.removeBookmark(i);
+            // Remove subcategory from category
+            parentCategory.deleteSubcategory(categoryName);
+
+            // Remove subcategory from nav
+            const subcategoryBtns = document.querySelectorAll('subcategory-btn');
+            removeCategoryBtns(subcategoryBtns, categoryName);
+
+            // Delete all bookmarks from the subcategory
+            const allBookmarks = bookmarkStore.allBookmarks;
+            for(let i = 0; i < allBookmarks.length; i++) {
+                if (allBookmarks[i].subcategory === categoryName) {
+                    bookmarkStore.removeBookmark(i);
+                }
             }
         }
+
+        
         console.log('categoryName deleted:', categoryName);
         console.log('new categories:', Category.getAllCategories());
         console.log('new bookmarks:', bookmarkStore.allBookmarks);
@@ -319,6 +345,25 @@ function displaySubcategoryListener() {
             hideDeleteCategoryBtn(false);
         }
     })
+}
+
+
+function isCategory(text) {
+    const categories = Category.getAllCategories();
+    return categories.some(category => category.name === text);
+}
+
+
+function findParentCategory(subcategoryName) {
+    const categories = Category.getAllCategories();
+    let parentCategory;
+    for(let category of categories) {
+        if(category.subcategoriesArr.includes(subcategoryName)) {
+            parentCategory = category;
+        }
+    }
+
+    return parentCategory;
 }
 
 

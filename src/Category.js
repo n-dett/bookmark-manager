@@ -34,7 +34,7 @@ class Category {
 }
 
 
-const webDevCategory = new Category("JavaScript");
+const jsCategory = new Category("JavaScript");
 
 const recipesCategory = new Category("Recipes");
 recipesCategory.addSubcategory("Dinner");

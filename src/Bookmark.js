@@ -1,6 +1,5 @@
 class Bookmark {
     constructor(name, url, category, subcategory, favorite) {
-        console.log("New bookmark!");
         this._name = name;
         this._url = addProtocol(url);
         this._category = category;

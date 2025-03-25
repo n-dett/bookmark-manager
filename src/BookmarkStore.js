@@ -108,4 +108,12 @@ bookmarkStore.addBookmark(
     false
 );
 
+bookmarkStore.addBookmark(
+    'Pixabay', 
+    'https://pixabay.com/',
+    'Design',
+    'Stock Photos',
+    false
+);
+
 export default bookmarkStore;

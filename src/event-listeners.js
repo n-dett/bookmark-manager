@@ -4,7 +4,8 @@ import {
     displayCategoryBtns, 
     toggleModal, 
     displayCards,
-    hideDeleteCategoryBtn 
+    hideDeleteCategoryBtn,
+    changeCategoryHeading
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -200,8 +201,6 @@ function deleteBookmarkListener() {
         if(selectedCard) {
             // Delete the card
             const index = parseInt(selectedCard.dataset.index);
-            console.log(`selected card index: ${selectedCard.dataset.index}`);
-            console.log(`removing index: ${index}`);
             bookmarkStore.removeBookmark(index);
             displayCards(bookmarkStore.allBookmarks);
             selectedCard = null;
@@ -221,20 +220,49 @@ function addCategoryListener() {
 }
 
 
-// function DeleteCategoryListener() {
-//     const button = document.getElementById('submit-delete-category');
-//     const categoryName = document.getElementById('category-heading').textContent;
+function deleteCategoryListener() {
+    let categoryName = null;
+    const deleteCategoryBtn = document.addEventListener('click', function(e) {
+        categoryName = document.getElementById('category-heading').textContent;
+        const modalText = document.getElementById('delete-category-name');
 
-//     button.addEventListener('click', function(e) {
-//         // Remove category from array
-//         Category.removeCategory(categoryName);
+        if(modalText && categoryName) {
+            modalText.textContent = categoryName;
+        }
+    })
 
-//         // Change category title
+    const confirmDeleteButton = document.getElementById('submit-delete-category');
 
-//         // Display All cards
-//     })
+    confirmDeleteButton.addEventListener('click', function(e) {
+        // Remove category from array
+        Category.removeCategory(categoryName);
 
-// }
+        // Remove category from nav
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(categoryBtn => {
+            if(categoryBtn.textContent === categoryName) {
+                categoryBtn.remove();
+            }
+        })
+
+        // Delete all bookmarks from this category
+        bookmarkStore.allBookmarks.forEach((bookmark, index) => {
+            if(bookmark.category === categoryName) {
+                bookmarkStore.removeBookmark(index);
+            }
+        })
+
+        // Change category heading to All
+        changeCategoryHeading('All');
+
+        // Display All
+        displayCards(bookmarkStore.allBookmarks);
+
+        // Refresh nav
+        displayCategoryBtns(Category.categoriesArr);
+    })
+
+}
 
 
 function displayCategoryListener() {
@@ -248,11 +276,8 @@ function displayCategoryListener() {
                 categoryName = categoryName.slice(0, -1);
             }
 
-            // Change category heading
-            const categoryHeading = document.getElementById('category-heading');
-            categoryHeading.textContent = categoryName;
+            changeCategoryHeading(categoryName);
 
-            
             // Filter cards by category
             if(categoryName === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
@@ -285,9 +310,7 @@ function displaySubcategoryListener() {
             const subcategory = e.target;
             let subcategoryName = subcategory.textContent;
 
-            // Change category heading
-            const categoryHeading = document.getElementById('category-heading');
-            categoryHeading.textContent = subcategoryName;
+            changeCategoryHeading(subcategoryName);
 
             const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
                 bookmark.subcategory === subcategoryName
@@ -298,22 +321,35 @@ function displaySubcategoryListener() {
         }
     })
 }
-    // , .subcategory-btn') && !e.target.classList.contains('hidden')
 
 
 
 
+function addAllEventListeners() {
+    // Card element listeners
+    heartIconListener();
+    cardClickListener();
 
-export { 
-    accordionListener, 
-    heartIconListener, 
-    closeModalListener, 
-    openModalListener,
-    openStaticModalListener,
-    cardClickListener,
-    addBookmarkListener,
-    deleteBookmarkListener,
-    addCategoryListener,
-    displayCategoryListener,
-    displaySubcategoryListener
+    // Nav listeners
+    accordionListener();
+
+    // Modal listeners
+    closeModalListener();
+    openModalListener('.delete-btn', 'delete-bookmark-modal-bgd');
+    openModalListener('.edit-btn', 'edit-bookmark-modal-bgd');
+    openStaticModalListener('delete-category-btn', 'delete-category-modal-bgd');
+    openStaticModalListener('add-category-btn', 'add-category-modal-bgd');
+    openStaticModalListener('add-subcategory-btn', 'add-subcategory-modal-bgd');
+    openStaticModalListener('add-bookmark-btn', 'add-bookmark-modal-bgd');
+
+    // CRUD listeners
+    addBookmarkListener();
+    deleteBookmarkListener();
+    addCategoryListener();
+    displayCategoryListener();
+    displaySubcategoryListener();
+    deleteCategoryListener();
 }
+
+
+export { addAllEventListeners }

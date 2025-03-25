@@ -203,6 +203,7 @@ function populateCategoryDropdowns() {
 function renderUI() {
     displayCards(bookmarkStore.allBookmarks);
     displayCategoryBtns(Category.categoriesArr);
+    hideDeleteCategoryBtn(true);
 }
 
 
@@ -219,6 +220,12 @@ function hideDeleteCategoryBtn(bool) {
 }
 
 
+function changeCategoryHeading(categoryName) {
+    const categoryHeading = document.getElementById('category-heading');
+    categoryHeading.textContent = categoryName;
+}
+
+
 export { 
     toggleSubcatVisibility, 
     toggleHeartIcon, 
@@ -226,5 +233,6 @@ export {
     displayCards, 
     displayCategoryBtns,
     renderUI,
-    hideDeleteCategoryBtn
+    hideDeleteCategoryBtn,
+    changeCategoryHeading
 }

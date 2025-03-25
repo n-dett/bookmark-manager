@@ -29,8 +29,8 @@ bookmarkStore.addBookmark(
 
 
 bookmarkStore.addBookmark(    
-    'Glazed Lemon Cookies', 
-    'https://houseofnasheats.com/double-lemon-glazed-cookies/',
+    'Earl Grey Cookies', 
+    'https://www.aspicyperspective.com/earl-grey-cookies-tea-cakes/',
     'Recipes',
     'Dessert',
     false
@@ -84,11 +84,27 @@ bookmarkStore.addBookmark(
     false
 );
 
+bookmarkStore.addBookmark(    
+    'Sesame Garlic Ramen Noodles', 
+    'https://themodernproper.com/sesame-garlic-ramen-noodles',
+    'Recipes',
+    'Dinner',
+    false
+);
+
 bookmarkStore.addBookmark(
     'Font Squirrel', 
     'https://www.fontsquirrel.com/',
     'Design',
     'Fonts',
+    false
+);
+
+bookmarkStore.addBookmark(    
+    'Garden Vegetable Quinoa Soup', 
+    'https://www.budgetbytes.com/garden-vegetable-quinoa-soup/',
+    'Recipes',
+    'Dinner',
     false
 );
 

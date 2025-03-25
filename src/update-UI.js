@@ -206,11 +206,25 @@ function renderUI() {
 }
 
 
+function hideDeleteCategoryBtn(bool) {
+    const deleteCategoryBtn = document.getElementById('delete-category-btn');
+
+    if(bool === true) {
+        deleteCategoryBtn.classList.add('hidden');
+    } else {
+        if(deleteCategoryBtn.classList.contains('hidden')) {
+            deleteCategoryBtn.classList.remove('hidden');
+        }
+    }
+}
+
+
 export { 
     toggleSubcatVisibility, 
     toggleHeartIcon, 
     toggleModal, 
     displayCards, 
     displayCategoryBtns,
-    renderUI
+    renderUI,
+    hideDeleteCategoryBtn
 }

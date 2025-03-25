@@ -1,4 +1,11 @@
-import { toggleHeartIcon, toggleSubcatVisibility, displayCategoryBtns, toggleModal, displayCards } from "./update-UI";
+import { 
+    toggleHeartIcon, 
+    toggleSubcatVisibility, 
+    displayCategoryBtns, 
+    toggleModal, 
+    displayCards,
+    hideDeleteCategoryBtn 
+} from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
 
@@ -33,7 +40,7 @@ function heartIconListener() {
             toggleHeartIcon(heartIcon);
 
             // Add favorite to bookmark object
-            let selectedCard = e.target.parentElement.parentElement.parentElement.parentElement;
+            let selectedCard = e.target.closest('.bookmark-card');
             console.log('card:', selectedCard);
             if(selectedCard) {
                 const index = parseInt(selectedCard.dataset.index);
@@ -235,7 +242,7 @@ function displayCategoryListener() {
         if (e.target.closest('.category-btn') && !e.target.classList.contains('caret')) {
             e.stopPropagation();
             const category = e.target;
-            let categoryName = category.textContent.trim();
+            let categoryName = category.textContent;
             // Remove caret
             if(categoryName[categoryName.length - 1] === '▸') {
                 categoryName = categoryName.slice(0, -1);
@@ -245,27 +252,52 @@ function displayCategoryListener() {
             const categoryHeading = document.getElementById('category-heading');
             categoryHeading.textContent = categoryName;
 
+            
             // Filter cards by category
             if(categoryName === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
+                hideDeleteCategoryBtn(true);
+
             } else if(categoryName === 'Favorites') {
                 const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
                     bookmark.favorite === true
                 );
 
                 displayCards(filteredCards);
+                hideDeleteCategoryBtn(true);
+                
             } else {
                 const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
                     bookmark.category === categoryName
                 );
 
                 displayCards(filteredCards);
+                hideDeleteCategoryBtn(false);
             }
         }
     })
 }
 
 
+function displaySubcategoryListener() {
+    document.addEventListener('click', function(e) {
+        if(e.target.closest('.subcategory-btn')) {
+            const subcategory = e.target;
+            let subcategoryName = subcategory.textContent;
+
+            // Change category heading
+            const categoryHeading = document.getElementById('category-heading');
+            categoryHeading.textContent = subcategoryName;
+
+            const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                bookmark.subcategory === subcategoryName
+            );
+
+            displayCards(filteredCards);
+            hideDeleteCategoryBtn(false);
+        }
+    })
+}
     // , .subcategory-btn') && !e.target.classList.contains('hidden')
 
 
@@ -282,5 +314,6 @@ export {
     addBookmarkListener,
     deleteBookmarkListener,
     addCategoryListener,
-    displayCategoryListener
+    displayCategoryListener,
+    displaySubcategoryListener
 }

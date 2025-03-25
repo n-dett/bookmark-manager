@@ -9,18 +9,18 @@ import {
     addBookmarkListener,
     deleteBookmarkListener,
     addCategoryListener,
-    displayCategoryListener
+    displayCategoryListener,
+    displaySubcategoryListener
 } from "./event-listeners";
 
-import { renderUI } from "./update-UI";
-
-// import { Category } from "./Category";
+import { renderUI, hideDeleteCategoryBtn } from "./update-UI";
 
 // Add all event listeners
 
 document.addEventListener("DOMContentLoaded", () => {
     // Display dynamic elements
     renderUI();
+    hideDeleteCategoryBtn(true);
     
     // Card element listeners
     heartIconListener();
@@ -43,4 +43,5 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteBookmarkListener();
     addCategoryListener();
     displayCategoryListener();
+    displaySubcategoryListener();
 })

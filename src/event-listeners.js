@@ -5,7 +5,8 @@ import {
     toggleModal, 
     displayCards,
     hideDeleteCategoryBtn,
-    changeCategoryHeading
+    changeCategoryHeading,
+    renderUI
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -246,20 +247,18 @@ function deleteCategoryListener() {
         })
 
         // Delete all bookmarks from this category
-        bookmarkStore.allBookmarks.forEach((bookmark, index) => {
-            if(bookmark.category === categoryName) {
-                bookmarkStore.removeBookmark(index);
+        for (let i = bookmarkStore.allBookmarks.length - 1; i >= 0; i--) {
+            if (bookmarkStore.allBookmarks[i].category === categoryName) {
+                bookmarkStore.removeBookmark(i);
             }
-        })
+        }
+        console.log('categoryName deleted:', categoryName);
+        console.log('new categories:', Category.getAllCategories());
+        console.log('new bookmarks:', bookmarkStore.allBookmarks);
 
-        // Change category heading to All
+        // Reload UI
         changeCategoryHeading('All');
-
-        // Display All
-        displayCards(bookmarkStore.allBookmarks);
-
-        // Refresh nav
-        displayCategoryBtns(Category.categoriesArr);
+        renderUI();
     })
 
 }

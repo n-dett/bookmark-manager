@@ -132,9 +132,18 @@ function appendCardButtons(bookmark, bmCardContainer) {
 
 
 function displayCategoryBtns(categoriesArr) {
-    // Clear current dynamic buttons
+    console.log('displayCategoryBtns called!');
+    // Clear current dynamic category buttons
     const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
-    dynamicBtns.forEach(btn => btn.remove());
+    if(dynamicBtns) {
+        dynamicBtns.forEach(btn => btn.remove());
+    }
+    
+    // Clear subcategory buttons
+    const subcategoryBtns = document.querySelectorAll('.subcategory-btn');
+    if(subcategoryBtns) {
+        subcategoryBtns.forEach(btn => btn.remove());
+    }
 
     // Append categories
     const categoryNav = document.getElementById('category-nav')
@@ -183,14 +192,14 @@ function displayCategoryBtns(categoriesArr) {
 }
 
 
-function populateCategoryDropdowns() {
+//function populateCategoryDropdowns() {
     // Populate Add Bookmark dropdown
 
 
     // Populate Edit Bookmark dropdowns
 
 
-}
+//}
 
 
 // function populateSubcategoryDropdown() {
@@ -199,12 +208,6 @@ function populateCategoryDropdowns() {
     // Populate Edit Bookmark dropdown
 // }
 
-
-function renderUI() {
-    displayCards(bookmarkStore.allBookmarks);
-    displayCategoryBtns(Category.categoriesArr);
-    hideDeleteCategoryBtn(true);
-}
 
 
 function hideDeleteCategoryBtn(bool) {
@@ -233,6 +236,13 @@ function removeCategoryBtns(categoryBtns, categoryName) {
             btn.remove();
         }
     }
+}
+
+
+function renderUI() {
+    displayCards(bookmarkStore.allBookmarks);
+    displayCategoryBtns(Category.getAllCategories());
+    hideDeleteCategoryBtn(true);
 }
 
 

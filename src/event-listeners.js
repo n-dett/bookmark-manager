@@ -4,10 +4,10 @@ import {
     displayCategoryBtns, 
     toggleModal, 
     displayCards,
-    hideDeleteCategoryBtn,
     changeCategoryHeading,
     renderUI,
-    removeCategoryBtns
+    removeCategoryBtns,
+    populateCategoryDropdown
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -154,15 +154,29 @@ function addBookmarkListener() {
             const url = urlInput.value.trim();
             // Get category
             const categoryInput = document.getElementById("new-bookmark-category-dropdown");
-            const category = "None" ? null : categoryInput.value;
+            const category = categoryInput.value === "None" ? null : categoryInput.value;
             // Get subcategory
             const subcategoryInput = document.getElementById("new-bookmark-subcategory-dropdown")
-            const subcategory = "None" ? null : subcategoryInput.value;
+            const subcategory = subcategoryInput.value === "None" ? null : subcategoryInput.value;
             // Favorite is false by default
             const favorite = false;
 
             bookmarkStore.addBookmark(name, url, category, subcategory, favorite);
-            displayCards(bookmarkStore.allBookmarks);
+
+            // Filter cards by category
+            let filteredCards;
+            if(!category) {
+                filteredCards = bookmarkStore.allBookmarks;
+                changeCategoryHeading('All');
+
+            } else {
+                changeCategoryHeading(category);
+                filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                    bookmark.category === category
+                );
+            }
+
+            displayCards(filteredCards);
 
             nameInput.value = "";
             urlInput.value = "";
@@ -277,11 +291,6 @@ function deleteCategoryListener() {
             }
         }
 
-        
-        console.log('categoryName deleted:', categoryName);
-        console.log('new categories:', Category.getAllCategories());
-        console.log('new bookmarks:', bookmarkStore.allBookmarks);
-
         // Reload UI
         changeCategoryHeading('All');
         renderUI();
@@ -306,7 +315,6 @@ function displayCategoryListener() {
             // Filter cards by category
             if(categoryName === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
-                hideDeleteCategoryBtn(true);
 
             } else if(categoryName === 'Favorites') {
                 const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
@@ -314,7 +322,6 @@ function displayCategoryListener() {
                 );
 
                 displayCards(filteredCards);
-                hideDeleteCategoryBtn(true);
                 
             } else {
                 const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
@@ -322,7 +329,6 @@ function displayCategoryListener() {
                 );
 
                 displayCards(filteredCards);
-                hideDeleteCategoryBtn(false);
             }
         }
     })
@@ -342,7 +348,6 @@ function displaySubcategoryListener() {
             );
 
             displayCards(filteredCards);
-            hideDeleteCategoryBtn(false);
         }
     })
 }

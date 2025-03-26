@@ -2,9 +2,13 @@ class Category {
     static categoriesArr = [];
 
     constructor(name) {
-        this._name = name;
-        this._subcategoriesArr = [];
-        Category.categoriesArr.push(this);
+        if (Category.categoriesArr.some(category => category.name === name)) {
+            alert('Category with this name already exists.');
+        } else {
+            this._name = name;
+            this._subcategoriesArr = [];
+            Category.categoriesArr.push(this);
+        }
     }
 
     static getAllCategories() {
@@ -19,6 +23,8 @@ class Category {
     addSubcategory(subcategory) {
         if(!this.subcategoriesArr.includes(subcategory)) {
             this.subcategoriesArr.push(subcategory);
+        } else {
+            alert('Subcategory with this name already exists');
         }
     }
 

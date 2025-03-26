@@ -33,7 +33,7 @@ bookmarkStore.addBookmark(
     'https://www.aspicyperspective.com/earl-grey-cookies-tea-cakes/',
     'Recipes',
     'Dessert',
-    false
+    true
 );
 
 bookmarkStore.addBookmark(
@@ -41,7 +41,7 @@ bookmarkStore.addBookmark(
     'https://css-tricks.com/block-links-the-search-for-a-perfect-solution/',
     'JavaScript',
     null,
-    false
+    true
 );
 
 bookmarkStore.addBookmark(

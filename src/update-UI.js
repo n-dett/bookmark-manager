@@ -192,14 +192,30 @@ function displayCategoryBtns(categoriesArr) {
 }
 
 
-//function populateCategoryDropdowns() {
-    // Populate Add Bookmark dropdown
+function populateCategoryDropdown(dropdownID) {
+    const dropdown = document.getElementById(dropdownID);
+
+    // Clear options
+    while(dropdown.firstChild) {
+        dropdown.removeChild(dropdown.firstChild);
+    }
+
+    // Populate with current categories
+    const optionNone = document.createElement('option');
+    optionNone.textContent = 'None';
+    dropdown.appendChild(optionNone);
+    Category.getAllCategories().forEach(category => {
+        const newOption = document.createElement('option');
+        newOption.textContent = category.name;
+        dropdown.appendChild(newOption);
+    })
+}
 
 
-    // Populate Edit Bookmark dropdowns
 
+// function populateAddBMSubcategoryDropdown() {
 
-//}
+// }
 
 
 // function populateSubcategoryDropdown() {
@@ -226,6 +242,14 @@ function hideDeleteCategoryBtn(bool) {
 function changeCategoryHeading(categoryName) {
     const categoryHeading = document.getElementById('category-heading');
     categoryHeading.textContent = categoryName;
+
+    if(categoryName === 'All' || categoryName === 'Favorites'){
+        hideDeleteCategoryBtn(true);
+    } else {
+        hideDeleteCategoryBtn(false);
+    }
+
+
 }
 
 
@@ -239,10 +263,13 @@ function removeCategoryBtns(categoryBtns, categoryName) {
 }
 
 
+
 function renderUI() {
     displayCards(bookmarkStore.allBookmarks);
     displayCategoryBtns(Category.getAllCategories());
     hideDeleteCategoryBtn(true);
+    populateCategoryDropdown('new-bookmark-category-dropdown');
+    populateCategoryDropdown('edit-bookmark-category-dropdown');
 }
 
 
@@ -253,7 +280,6 @@ export {
     displayCards, 
     displayCategoryBtns,
     renderUI,
-    hideDeleteCategoryBtn,
     changeCategoryHeading,
-    removeCategoryBtns
+    removeCategoryBtns,
 }

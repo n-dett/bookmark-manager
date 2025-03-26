@@ -231,7 +231,7 @@ function addCategoryListener() {
     button.addEventListener('click', function(e) {
         const categoryName = categoryInput.value;
         new Category(categoryName);
-        displayCategoryBtns(Category.categoriesArr);
+        displayCategoryBtns();
     })
 }
 

@@ -131,7 +131,8 @@ function appendCardButtons(bookmark, bmCardContainer) {
 }
 
 
-function displayCategoryBtns(categoriesArr) {
+function displayCategoryBtns() {
+    const categoriesArr = Category.getAllCategories();
     console.log('displayCategoryBtns called!');
     // Clear current dynamic category buttons
     const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
@@ -266,7 +267,7 @@ function removeCategoryBtns(categoryBtns, categoryName) {
 
 function renderUI() {
     displayCards(bookmarkStore.allBookmarks);
-    displayCategoryBtns(Category.getAllCategories());
+    displayCategoryBtns();
     hideDeleteCategoryBtn(true);
     populateCategoryDropdown('new-bookmark-category-dropdown');
     populateCategoryDropdown('edit-bookmark-category-dropdown');

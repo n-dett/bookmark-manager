@@ -233,6 +233,8 @@ function addCategoryListener() {
         const categoryName = categoryInput.value;
         new Category(categoryName);
         displayCategoryBtns();
+        populateCategoryDropdown('new-bookmark-category-dropdown');
+        populateCategoryDropdown('edit-bookmark-category-dropdown');
     })
 }
 

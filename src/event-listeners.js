@@ -459,12 +459,9 @@ function editBookmarkListener() {
     editBookmarkSubmitBtn.addEventListener('click', function() {
         if(selectedCard) {
             const name = nameInput.value;
-
             let url = urlInput.value;
             url = addProtocol(url);
-
             const category = categoryDropdown.value;
-
             const subcategory = subcategoryDropdown.value;
 
             bookmark.name = name;
@@ -485,12 +482,18 @@ function editBookmarkListener() {
 
             const currentHeading = document.getElementById('category-heading');
             const headingText = currentHeading.textContent;
+            console.log('heading text', headingText);
 
             if(headingText === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
-            } else {
+            } else if(isCategory(headingText)) {
                 const filteredCards = bookmarkStore.allBookmarks.filter(bm => 
                     bm.category === headingText
+                );
+                displayCards(filteredCards);
+            } else {
+                const filteredCards = bookmarkStore.allBookmarks.filter(bm => 
+                    bm.subcategory === headingText
                 );
                 displayCards(filteredCards);
             }

@@ -133,7 +133,6 @@ function appendCardButtons(bookmark, bmCardContainer) {
 
 function displayCategoryBtns() {
     const categoriesArr = Category.getAllCategories();
-    console.log('displayCategoryBtns called!');
     // Clear current dynamic category buttons
     const dynamicBtns = document.querySelectorAll('.category-btn:not(.static)');
     if(dynamicBtns) {

@@ -255,7 +255,24 @@ function deleteBookmarkListener() {
             // Delete the card
             const index = parseInt(selectedCard.dataset.index);
             bookmarkStore.removeBookmark(index);
-            displayCards(bookmarkStore.allBookmarks);
+            // displayCards(bookmarkStore.allBookmarks);
+            // changeCategoryHeading('All');
+
+            const currentHeading = document.getElementById('category-heading');
+            const headingText = currentHeading.textContent;
+            console.log('heading text', headingText);
+            let filteredCards;
+
+            if(headingText === 'All') {
+                displayCards(bookmarkStore.allBookmarks);
+            } else if(isCategory(headingText)) {
+                filteredCards = filterCards('category', headingText);
+                displayCards(filteredCards);
+            } else {
+                filteredCards = filterCards('subcategory', headingText);
+                displayCards(filteredCards);
+            }
+
             selectedCard = null;
         }
     })
@@ -331,8 +348,8 @@ function deleteCategoryListener() {
         }
 
         // Reload UI
-        changeCategoryHeading('All');
         renderUI();
+        changeCategoryHeading('All');
     })
 
 }

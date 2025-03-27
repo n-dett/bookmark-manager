@@ -171,10 +171,15 @@ function addBookmarkListener() {
                 filteredCards = bookmarkStore.allBookmarks;
                 changeCategoryHeading('All');
 
-            } else {
+            } else if(!subcategory) {
                 changeCategoryHeading(category);
                 filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
                     bookmark.category === category
+                );
+            } else {
+                changeCategoryHeading(subcategory);
+                filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+                    bookmark.subcategory === subcategory
                 );
             }
 

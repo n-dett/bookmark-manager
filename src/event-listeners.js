@@ -441,10 +441,14 @@ function editBookmarkListener() {
                 categoryDropdown.value = 'None';
             }
 
+            populateSubcategoryDropdown('edit-bookmark-subcategory-dropdown', 'edit-bookmark-category-dropdown')
+
             if(bookmark.subcategory) {
-                subcategoryDropdown.value = bookmark.subcategory;
+                console.log('array:', Array.from(subcategoryDropdown.options));
+                const index = Array.from(subcategoryDropdown.options).findIndex(subcat => subcat.text === bookmark.subcategory);
+                subcategoryDropdown.selectedIndex = index;
             } else {
-                subcategoryDropdown.value = 'None';
+                subcategoryDropdown.selectedIndex = 0;
             }
         }
     })

@@ -14,6 +14,7 @@ class BookmarkStore {
         this.bookmarks.splice(bookmarkIndex, 1);
     }
 
+
     get allBookmarks() {return this.bookmarks}
 }
 

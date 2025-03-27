@@ -235,7 +235,7 @@ function populateSubcategoryDropdown(subcategoryDropdownID, categoryDropdownID) 
     console.log('parent:', parentCategoryObj);
 
     
-    if(parentCategoryObj.subcategoriesArr.length) {
+    if(parentCategoryObj) {
         parentCategoryObj.subcategoriesArr.forEach(subcategory => {
             const newOption = document.createElement('option');
             newOption.textContent = subcategory;

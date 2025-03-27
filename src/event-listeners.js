@@ -12,6 +12,7 @@ import {
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
+import { addProtocol } from "./bookmark";
 
 function accordionListener() {
     // Add event to document so new buttons will have event 
@@ -410,6 +411,92 @@ function addSubcategoryListener() {
 }
 
 
+function editBookmarkListener() {
+    const nameInput = document.getElementById('edit-bookmark-name');
+    const urlInput = document.getElementById('edit-bookmark-url');
+    const categoryDropdown = document.getElementById('edit-bookmark-category-dropdown');
+    const subcategoryDropdown = document.getElementById('edit-bookmark-subcategory-dropdown');
+    let bookmark = null;
+
+    // Add listener to all card delete buttons
+    // Track which card was clicked
+    let selectedCard = null;
+    document.body.addEventListener('click', function(e) {
+        const cardEditButton = e.target.closest('.edit-btn');
+        if(cardEditButton) {
+            selectedCard = e.target.closest('.bookmark-card');
+
+            // Get current bookmark
+            const index = parseInt(selectedCard.dataset.index);
+            bookmark = bookmarkStore.allBookmarks[index];
+
+            // Fill the inputs with current values
+
+            nameInput.value = bookmark.name;
+            urlInput.value = bookmark.url;
+
+            if(bookmark.category) {
+                categoryDropdown.value = bookmark.category;
+            } else {
+                categoryDropdown.value = 'None';
+            }
+
+            if(bookmark.subcategory) {
+                subcategoryDropdown.value = bookmark.subcategory;
+            } else {
+                subcategoryDropdown.value = 'None';
+            }
+        }
+    })
+
+    
+    const editBookmarkSubmitBtn = document.getElementById('submit-edit-bookmark');
+
+    editBookmarkSubmitBtn.addEventListener('click', function() {
+        if(selectedCard) {
+            const name = nameInput.value;
+
+            let url = urlInput.value;
+            url = addProtocol(url);
+
+            const category = categoryDropdown.value;
+
+            const subcategory = subcategoryDropdown.value;
+
+            bookmark.name = name;
+            bookmark.url = url;
+
+            if(category !== "None") {
+                bookmark.category = category;
+            } else {
+                bookmark.category = null;
+            }
+
+            if(subcategory !== "None") {
+                bookmark.subcategory = subcategory;
+            } else {
+                bookmark.subcategory = null;
+            }
+            
+
+            const currentHeading = document.getElementById('category-heading');
+            const headingText = currentHeading.textContent;
+
+            if(headingText === 'All') {
+                displayCards(bookmarkStore.allBookmarks);
+            } else {
+                const filteredCards = bookmarkStore.allBookmarks.filter(bm => 
+                    bm.category === headingText
+                );
+                displayCards(filteredCards);
+            }
+
+            selectedCard = null;
+        }
+    })
+}
+
+
 
 
 function addAllEventListeners() {
@@ -436,6 +523,7 @@ function addAllEventListeners() {
     displayCategoryListener();
     displaySubcategoryListener();
     deleteCategoryListener();
+    editBookmarkListener();
 
     // Dropdown listeners
     populateSubcategoryDropdownListener('new-bookmark-category-dropdown', 'new-bookmark-subcategory-dropdown');

@@ -227,22 +227,22 @@ function populateSubcategoryDropdown(subcategoryDropdownID, categoryDropdownID) 
     // Populate with current categories
     const optionNone = document.createElement('option');
     optionNone.textContent = 'None';
+    optionNone.value = 'None';
     subcategoryDropdown.appendChild(optionNone);
 
     const parentCategory = categoryDropdown.value;
     const categories = Category.getAllCategories();
     const parentCategoryObj = categories.find(category => category.name === parentCategory);
-    console.log('parent:', parentCategoryObj);
 
-    
+
     if(parentCategoryObj) {
         parentCategoryObj.subcategoriesArr.forEach(subcategory => {
             const newOption = document.createElement('option');
             newOption.textContent = subcategory;
+            newOption.value = subcategory;
             subcategoryDropdown.appendChild(newOption);
         })
     }
-
 }
 
 

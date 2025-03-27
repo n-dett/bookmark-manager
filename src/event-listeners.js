@@ -145,6 +145,45 @@ function cardClickListener() {
 
 
 function addBookmarkListener() {
+    // Populate Category and Subcategory dropdowns
+    const categoryDropdown = document.getElementById("new-bookmark-category-dropdown");
+    const subcategoryDropdown = document.getElementById("new-bookmark-subcategory-dropdown")
+    const heading = document.getElementById('category-heading');
+    const addBookmarkBtn = document.getElementById('add-bookmark-btn');
+
+    addBookmarkBtn.addEventListener('click', function() {
+        const headingText = heading.textContent;
+
+        if(headingText === 'All' || headingText === 'Favorites') {
+            // Category
+            categoryDropdown.selectedIndex = 0;
+            // Subcategory
+            populateSubcategoryDropdown('new-bookmark-subcategory-dropdown', 'new-bookmark-category-dropdown');
+        } else if (isCategory(headingText)) {
+            // Category
+            const parentIndex = Array.from(categoryDropdown.options).findIndex(category => category.value === headingText);
+            categoryDropdown.selectedIndex = parentIndex;
+
+            // Subcategory
+            populateSubcategoryDropdown('new-bookmark-subcategory-dropdown', 'new-bookmark-category-dropdown');
+            subcategoryDropdown.selectedIndex = 0;
+            console.log('optionValue:', subcategoryDropdown.value);
+            
+
+        } else {
+            // Category
+            const parentCategory = findParentCategory(headingText);
+            const parentCategoryName = parentCategory.name;
+            const parentIndex = Array.from(categoryDropdown.options).findIndex(category => category.text === parentCategoryName);
+            categoryDropdown.selectedIndex = parentIndex;
+
+            // Subcategory
+            populateSubcategoryDropdown('new-bookmark-subcategory-dropdown', 'new-bookmark-category-dropdown')
+        }
+    })
+
+
+    // Get values of new bookmark
     const button = document.getElementById('submit-new-bookmark');
     if(button) {
         button.addEventListener('click', function() {
@@ -155,11 +194,9 @@ function addBookmarkListener() {
             const urlInput = document.getElementById("new-bookmark-url");
             const url = urlInput.value.trim();
             // Get category
-            const categoryInput = document.getElementById("new-bookmark-category-dropdown");
-            const category = categoryInput.value === "None" ? null : categoryInput.value;
+            const category = categoryDropdown.value === "None" ? null : categoryDropdown.value;
             // Get subcategory
-            const subcategoryInput = document.getElementById("new-bookmark-subcategory-dropdown")
-            const subcategory = subcategoryInput.value === "None" ? null : subcategoryInput.value;
+            const subcategory = subcategoryDropdown.value === "None" ? null : subcategoryDropdown.value;
             // Favorite is false by default
             const favorite = false;
 
@@ -187,8 +224,8 @@ function addBookmarkListener() {
 
             nameInput.value = "";
             urlInput.value = "";
-            categoryInput.value = "";
-            subcategoryInput.value = "";
+            categoryDropdown.value = "";
+            subcategoryDropdown.value = "";
         })
     }
 }
@@ -234,9 +271,9 @@ function deleteBookmarkListener() {
 
 function addCategoryListener() {
     const button = document.getElementById('submit-new-category');
-    const categoryInput = document.getElementById('new-category-name');
+    const categoryDropdown = document.getElementById('new-category-name');
     button.addEventListener('click', function(e) {
-        const categoryName = categoryInput.value;
+        const categoryName = categoryDropdown.value;
         new Category(categoryName);
         displayCategoryBtns();
         populateCategoryDropdown('new-bookmark-category-dropdown');
@@ -400,7 +437,7 @@ function addSubcategoryListener() {
 
     // On Add Category submit button
     const addSubcategorySubmitBtn = document.getElementById('submit-new-subcategory');
-    const subcategoryInput = document.getElementById('new-subcategory-name');
+    const subcategoryDropdown = document.getElementById('new-subcategory-name');
     const categoryDropdown = document.getElementById('add-subcategory-category-dropdown');
 
     addSubcategorySubmitBtn.addEventListener('click', function() {
@@ -408,8 +445,8 @@ function addSubcategoryListener() {
             alert('You must add a category before adding a subcategory')
         } else {
             const parentCategory = Category.getAllCategories().find(category => category.name === categoryDropdown.value);
-            parentCategory.addSubcategory(subcategoryInput.value);
-            console.log(subcategoryInput.value);
+            parentCategory.addSubcategory(subcategoryDropdown.value);
+            console.log(subcategoryDropdown.value);
             displayCategoryBtns();
         }
     })
@@ -449,7 +486,6 @@ function editBookmarkListener() {
             populateSubcategoryDropdown('edit-bookmark-subcategory-dropdown', 'edit-bookmark-category-dropdown')
 
             if(bookmark.subcategory) {
-                console.log('array:', Array.from(subcategoryDropdown.options));
                 const index = Array.from(subcategoryDropdown.options).findIndex(subcat => subcat.text === bookmark.subcategory);
                 subcategoryDropdown.selectedIndex = index;
             } else {

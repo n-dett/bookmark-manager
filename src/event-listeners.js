@@ -255,8 +255,6 @@ function deleteBookmarkListener() {
             // Delete the card
             const index = parseInt(selectedCard.dataset.index);
             bookmarkStore.removeBookmark(index);
-            // displayCards(bookmarkStore.allBookmarks);
-            // changeCategoryHeading('All');
 
             const currentHeading = document.getElementById('category-heading');
             const headingText = currentHeading.textContent;
@@ -450,6 +448,7 @@ function addSubcategoryListener() {
             parentCategory.addSubcategory(subcategoryDropdown.value);
             console.log(subcategoryDropdown.value);
             displayCategoryBtns();
+            subcategoryDropdown.value = "";
         }
     })
 }

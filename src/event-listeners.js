@@ -7,7 +7,8 @@ import {
     changeCategoryHeading,
     renderUI,
     removeCategoryBtns,
-    populateSubcategoryDropdown
+    populateSubcategoryDropdown,
+    populateCategoryDropdown
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -381,6 +382,32 @@ function populateSubcategoryDropdownListener(categoryDropdownID, subcategoryDrop
 }
 
 
+function addSubcategoryListener() {
+    // On Add Category button
+    const addSubcategoryBtn = document.getElementById('add-subcategory-btn');
+
+    addSubcategoryBtn.addEventListener('click', function() {
+        populateCategoryDropdown('add-subcategory-category-dropdown');
+    })
+
+    // On Add Category submit button
+    const addSubcategorySubmitBtn = document.getElementById('submit-new-subcategory');
+    const subcategoryInput = document.getElementById('new-subcategory-name');
+    const categoryDropdown = document.getElementById('add-subcategory-category-dropdown');
+
+    addSubcategorySubmitBtn.addEventListener('click', function() {
+        if(categoryDropdown.value === "None") {
+            alert('You must add a category before adding a subcategory')
+        } else {
+            const parentCategory = Category.getAllCategories().find(category => category.name === categoryDropdown.value);
+            parentCategory.addSubcategory(subcategoryInput.value);
+            console.log(subcategoryInput.value);
+            displayCategoryBtns();
+        }
+    })
+}
+
+
 
 
 function addAllEventListeners() {
@@ -411,6 +438,7 @@ function addAllEventListeners() {
     // Dropdown listeners
     populateSubcategoryDropdownListener('new-bookmark-category-dropdown', 'new-bookmark-subcategory-dropdown');
     populateSubcategoryDropdownListener('edit-bookmark-category-dropdown', 'edit-bookmark-subcategory-dropdown');
+    addSubcategoryListener();
 }
 
 

@@ -303,5 +303,6 @@ export {
     renderUI,
     changeCategoryHeading,
     removeCategoryBtns,
-    populateSubcategoryDropdown
+    populateSubcategoryDropdown,
+    populateCategoryDropdown
 }

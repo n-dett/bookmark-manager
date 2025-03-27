@@ -61,10 +61,7 @@ function heartIconListener() {
                     const categoryHeading = document.getElementById('category-heading');
                     const categoryName = categoryHeading.textContent;
                     if(categoryName === 'Favorites') {
-                        const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                            bookmark.favorite === true
-                        );
-        
+                        const filteredCards = filterCards('favorite', true);
                         displayCards(filteredCards);
                     }
                 }
@@ -210,14 +207,10 @@ function addBookmarkListener() {
 
             } else if(!subcategory) {
                 changeCategoryHeading(category);
-                filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                    bookmark.category === category
-                );
+                filteredCards = filterCards('category', category);
             } else {
                 changeCategoryHeading(subcategory);
-                filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                    bookmark.subcategory === subcategory
-                );
+                filteredCards = filterCards('subcategory', subcategory);
             }
 
             displayCards(filteredCards);
@@ -359,21 +352,16 @@ function displayCategoryListener() {
             changeCategoryHeading(categoryName);
 
             // Filter cards by category
+            let filteredCards;
             if(categoryName === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
 
             } else if(categoryName === 'Favorites') {
-                const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                    bookmark.favorite === true
-                );
-
+                filteredCards = filterCards('favorite', true);
                 displayCards(filteredCards);
                 
             } else {
-                const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                    bookmark.category === categoryName
-                );
-
+                filteredCards = filterCards('category', categoryName);
                 displayCards(filteredCards);
             }
         }
@@ -389,10 +377,7 @@ function displaySubcategoryListener() {
 
             changeCategoryHeading(subcategoryName);
 
-            const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
-                bookmark.subcategory === subcategoryName
-            );
-
+            const filteredCards = filterCards('subcategory', subcategoryName);
             displayCards(filteredCards);
         }
     })
@@ -524,24 +509,30 @@ function editBookmarkListener() {
             const currentHeading = document.getElementById('category-heading');
             const headingText = currentHeading.textContent;
             console.log('heading text', headingText);
+            let filteredCards;
 
             if(headingText === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
             } else if(isCategory(headingText)) {
-                const filteredCards = bookmarkStore.allBookmarks.filter(bm => 
-                    bm.category === headingText
-                );
+                filteredCards = filterCards('category', headingText);
                 displayCards(filteredCards);
             } else {
-                const filteredCards = bookmarkStore.allBookmarks.filter(bm => 
-                    bm.subcategory === headingText
-                );
+                filteredCards = filterCards('subcategory', headingText);
                 displayCards(filteredCards);
             }
 
             selectedCard = null;
         }
     })
+}
+
+
+function filterCards(property, value) {
+    const filteredCards = bookmarkStore.allBookmarks.filter(bookmark => 
+        bookmark[property] === value
+    );
+
+    return filteredCards;
 }
 
 

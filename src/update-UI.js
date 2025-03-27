@@ -214,16 +214,36 @@ function populateCategoryDropdown(dropdownID) {
 
 
 
-// function populateAddBMSubcategoryDropdown() {
 
-// }
+function populateSubcategoryDropdown(subcategoryDropdownID, categoryDropdownID) {
+    const subcategoryDropdown = document.getElementById(subcategoryDropdownID);
+    const categoryDropdown = document.getElementById(categoryDropdownID);
 
+    // Clear subcategory options
+    while(subcategoryDropdown.firstChild) {
+        subcategoryDropdown.removeChild(subcategoryDropdown.firstChild);
+    }
 
-// function populateSubcategoryDropdown() {
-    // Populate Add Bookmark dropdown
+    // Populate with current categories
+    const optionNone = document.createElement('option');
+    optionNone.textContent = 'None';
+    subcategoryDropdown.appendChild(optionNone);
 
-    // Populate Edit Bookmark dropdown
-// }
+    const parentCategory = categoryDropdown.value;
+    const categories = Category.getAllCategories();
+    const parentCategoryObj = categories.find(category => category.name === parentCategory);
+    console.log('parent:', parentCategoryObj);
+
+    
+    if(parentCategoryObj.subcategoriesArr.length) {
+        parentCategoryObj.subcategoriesArr.forEach(subcategory => {
+            const newOption = document.createElement('option');
+            newOption.textContent = subcategory;
+            subcategoryDropdown.appendChild(newOption);
+        })
+    }
+
+}
 
 
 
@@ -283,4 +303,5 @@ export {
     renderUI,
     changeCategoryHeading,
     removeCategoryBtns,
+    populateSubcategoryDropdown
 }

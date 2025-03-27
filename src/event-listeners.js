@@ -7,7 +7,7 @@ import {
     changeCategoryHeading,
     renderUI,
     removeCategoryBtns,
-    populateCategoryDropdown
+    populateSubcategoryDropdown
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -372,6 +372,15 @@ function findParentCategory(subcategoryName) {
 }
 
 
+function populateSubcategoryDropdownListener(categoryDropdownID, subcategoryDropdownID) {
+    const categoryDropdown = document.getElementById(categoryDropdownID);
+
+    categoryDropdown.addEventListener('change', function() {
+        populateSubcategoryDropdown(subcategoryDropdownID, categoryDropdownID);
+    })
+}
+
+
 
 
 function addAllEventListeners() {
@@ -382,7 +391,7 @@ function addAllEventListeners() {
     // Nav listeners
     accordionListener();
 
-    // Modal listeners
+    // Open and close modal listeners
     closeModalListener();
     openModalListener('.delete-btn', 'delete-bookmark-modal-bgd');
     openModalListener('.edit-btn', 'edit-bookmark-modal-bgd');
@@ -398,6 +407,10 @@ function addAllEventListeners() {
     displayCategoryListener();
     displaySubcategoryListener();
     deleteCategoryListener();
+
+    // Dropdown listeners
+    populateSubcategoryDropdownListener('new-bookmark-category-dropdown', 'new-bookmark-subcategory-dropdown');
+    populateSubcategoryDropdownListener('edit-bookmark-category-dropdown', 'edit-bookmark-subcategory-dropdown');
 }
 
 

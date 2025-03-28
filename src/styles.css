@@ -30,6 +30,7 @@ body {
 #sidebar-main {
     width: 100%;
     display: flex;
+    position: relative;
 }
 
 #sidebar {
@@ -238,13 +239,22 @@ svg {
     fill: rgb(160, 160, 160); 
 } */
   
-
-
-.modal-background {
+#overlay {
     background-color: rgba(129, 129, 129, 0.251);
     width: 100%;
     height: calc(100% + 76px);
     z-index: 1;
+    position: fixed;
+    overflow: auto;
+    margin: -15px;
+    margin-top: -76px;
+}
+
+.modal-background {
+    background-color: rgba(129, 129, 129, 0.251);
+    width: 100vw;
+    height: calc(100% + 76px);
+    z-index: 2;
     position: fixed;
     overflow: auto;
     display: flex;
@@ -369,16 +379,7 @@ input, select {
     transition: none !important;
   }
 
-#overlay {
-    background-color: rgba(129, 129, 129, 0.251);
-    width: 100%;
-    height: calc(100% + 76px);
-    z-index: 1;
-    position: fixed;
-    overflow: auto;
-    margin: -15px;
-    margin-top: -76px;
-}
+
 
 #sidebar-mobile-close {
     display: none;
@@ -388,7 +389,7 @@ input, select {
 }
 
 
-/********************************/
+
 
 /* Hover effect (Desktop Only) */
 @media (hover: hover) {
@@ -396,9 +397,6 @@ input, select {
         fill: rgb(50, 50, 50);
     }
 }
-
-/********************************/
-
 
 
 /* For all touch screen */
@@ -438,7 +436,8 @@ input, select {
     #sidebar {
         left: 0;
         transform: translateX(-100%);
-        z-index: 99;
+        /* position: fixed;
+        z-index: 99; */
         margin: 0;
         transition: transform 0.3s;
     }

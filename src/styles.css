@@ -24,9 +24,13 @@ body {
     height: 100vh; 
     padding: 15px 0 15px 15px;
     margin: 0;
-    display: flex;
+    
 }
 
+#sidebar-main {
+    width: 100%;
+    display: flex;
+}
 
 #sidebar {
     background-color: rgb(255, 255, 255);
@@ -326,19 +330,26 @@ input, select {
 
 
 
+
 /* For all touch screen */
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse) { 
     /* Disable hover effects */
     .button:hover, .submit-form-btn:hover, .card-btns > button > svg:hover,
     .bookmark-card:hover, .category-btn:hover, .subcategory-btn:hover {
       background-color: inherit; 
     }
-}
+} 
 
 /* For all non-desktop */
 @media (max-width: 800px) {
     body {
         padding: 15px;
+    }
+    h1 {
+        display: block;
+    }
+    h2 {
+        font-size: 1.9rem;
     }
     #sidebar {
         transform: translateX(-150%);
@@ -387,15 +398,15 @@ input, select {
     .card-text {
         max-width: 65%;
     }
-}
+} 
 
 
-/*@media (min-width: 993px) and (max-width: 1200px) {
+/* @media (min-width: 993px) and (max-width: 1200px) {
 
 }
 
 
 @media (min-width: 1201px) {
 
-} */
+}  */
 

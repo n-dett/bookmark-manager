@@ -297,6 +297,14 @@ function removeCategoryBtns(categoryBtns, categoryName) {
 }
 
 
+function toggleHamburger() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    overlay.classList.toggle('hidden');
+    sidebar.classList.toggle('sidebar-mobile-visible');
+}
+
+
 
 function renderUI() {
     displayCards(bookmarkStore.allBookmarks);
@@ -318,5 +326,6 @@ export {
     removeCategoryBtns,
     populateSubcategoryDropdown,
     populateCategoryDropdown,
-    hideAddSubcategoryBtn
+    hideAddSubcategoryBtn,
+    toggleHamburger
 }

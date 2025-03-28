@@ -9,7 +9,8 @@ import {
     removeCategoryBtns,
     populateSubcategoryDropdown,
     populateCategoryDropdown,
-    hideAddSubcategoryBtn
+    hideAddSubcategoryBtn,
+    toggleHamburger
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -110,6 +111,12 @@ function openStaticModalListener(btnId, modalId) {
             const modal = document.getElementById(modalId);
             if(modal) {
                 toggleModal(modal);
+                if(btnId !== 'add-bookmark-btn'){
+                    // If tablet/mobile nav, close it
+                    if(window.innerWidth < 801){
+                        toggleHamburger();
+                    }
+                }
             }
         })
     }
@@ -385,6 +392,11 @@ function displayCategoryListener() {
                 filteredCards = filterCards('category', categoryName);
                 displayCards(filteredCards);
             }
+
+            // If tablet/mobile nav, close it
+            if(window.innerWidth < 801){
+                toggleHamburger();
+            }
         }
     })
 }
@@ -400,6 +412,11 @@ function displaySubcategoryListener() {
 
             const filteredCards = filterCards('subcategory', subcategoryName);
             displayCards(filteredCards);
+
+            // If tablet/mobile nav, close it
+            if(window.innerWidth < 801){
+                toggleHamburger();
+            }
         }
     })
 }
@@ -558,6 +575,33 @@ function filterCards(property, value) {
 }
 
 
+function toggleHamburgerListener() {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+
+    hamburgerBtn.addEventListener('click', function() {
+        toggleHamburger();
+    })
+}
+
+
+/*
+    Function adapted from Stop Animations During Window Resizing
+    https://css-tricks.com/stop-animations-during-window-resizing/#:~:text=The%20trick%20is%20to%20apply,let%20resizeTimer%3B%20window.
+    Accessed 3/27/2025
+
+*/
+function delayNavTransition() {
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        document.body.classList.add("stop-resize-animation");
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.body.classList.remove("stop-resize-animation");
+        }, 400);
+    });
+}
+
+
 
 
 function addAllEventListeners() {
@@ -567,6 +611,8 @@ function addAllEventListeners() {
 
     // Nav listeners
     accordionListener();
+    toggleHamburgerListener();
+    delayNavTransition();
 
     // Open and close modal listeners
     closeModalListener();

@@ -41,6 +41,7 @@ body {
     display: flex;
     flex-direction: column;
     position: fixed;
+    transition: none;
 }
 
 h1 {
@@ -229,7 +230,6 @@ svg {
 
 
 .modal-background {
-    background-color: white;
     background-color: rgba(129, 129, 129, 0.251);
     width: 100%;
     height: calc(100% + 76px);
@@ -303,7 +303,7 @@ input, select {
     align-self: flex-start;
 }
 
-.close-btn {
+.close-btn, #sidebar-mobile-close {
     background-color: transparent;
     border: none;
     margin: 12px 0 0 20px;
@@ -344,17 +344,37 @@ input, select {
     width: 22px;
     background-color: transparent;
     border: none;
-    /* align-self: flex-start; */
 }
 
 #hamburger-svg {
     width: 100%;
-    /* display: inline-block; */
     fill: rgb(50, 50, 50);
     height: 22px;
     margin-top: 5px;
 }
 
+.stop-resize-animation * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+#overlay {
+    background-color: rgba(129, 129, 129, 0.251);
+    width: 100%;
+    height: calc(100% + 76px);
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    margin: -15px;
+    margin-top: -76px;
+}
+
+#sidebar-mobile-close {
+    display: none;
+    align-self: flex-end;
+    width: 24px;
+    margin: 0;
+}
 
 
 
@@ -384,9 +404,20 @@ input, select {
         font-size: 1.9rem;
     }
     #sidebar {
-        transform: translateX(-150%);
+        left: 0;
+        transform: translateX(-100%);
         z-index: 99;
         margin: 0;
+        transition: transform 0.3s;
+    }
+    .sidebar-mobile-visible {
+        transform: translateX(0) !important;
+    }
+    #sidebar-mobile-close {
+        display: block;
+    }
+    #nav-heading {
+        display: none;
     }
     #main-content {
         margin: 0;

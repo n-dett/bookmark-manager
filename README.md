@@ -1,5 +1,8 @@
 # Bookmark Manager
 
+### Live Preview
+https://n-dett.github.io/bookmark-manager/
+
 A simple and responsive bookmark manager that displays bookmarks as a grid of clickable cards. Easily organize and filter bookmarks by categories and subcategories.
 
 ## Features

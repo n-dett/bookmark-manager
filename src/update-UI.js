@@ -14,7 +14,16 @@ function toggleSubcatVisibility(subCatList, caret) {
 
 
 function toggleHeartIcon(heartIcon) {
-    heartIcon.classList.toggle('heart-active');
+    // heartIcon.classList.toggle('heart-active');
+    heartIcon.classList.toggle("heart-active");
+
+    // Temporarily disable hover by adding a "no-hover" class
+    heartIcon.classList.add("no-hover");
+
+    // Re-enable hover after a short delay
+    setTimeout(() => {
+      heartIcon.classList.remove("no-hover");
+    }, 600); // Just enough time to avoid flicker
 }
 
 

@@ -224,9 +224,20 @@ svg {
     /* transition: fill .3s; */
 }
 
-.heart-active {
+/* .card-btns > button > svg:not(.heart-active):hover, .heart-active {
     fill: rgb(50, 50, 50);
+} */
+
+
+.card-btns > button > svg.heart-active {
+    fill: rgb(50, 50, 50) !important; 
 }
+
+
+.card-btns > button > svg.no-hover:hover {
+    fill: rgb(160, 160, 160); 
+} */
+  
 
 
 .modal-background {
@@ -377,8 +388,16 @@ input, select {
 }
 
 
+/********************************/
 
+/* Hover effect (Desktop Only) */
+@media (hover: hover) {
+    .card-btns > button > svg:not(.heart-active):not(.no-hover):hover {
+        fill: rgb(50, 50, 50);
+    }
+}
 
+/********************************/
 
 
 
@@ -393,9 +412,9 @@ input, select {
         background-color: rgb(255, 255, 255);
     }
 
-    /* .card-btns > button > svg:hover {
+    .card-btns > button > svg:hover {
         fill: rgb(160, 160, 160);
-    } */
+    }
 
     .submit-form-btn:hover {
         background-color: rgb(222, 222, 222);

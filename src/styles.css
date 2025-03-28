@@ -239,6 +239,16 @@ svg {
     fill: rgb(160, 160, 160); 
 } */
   
+#overlay {
+    background-color: rgba(129, 129, 129, 0.251);
+    width: 100%;
+    height: calc(100% + 76px);
+    z-index: 2 !important;
+    position: fixed;
+    overflow: auto;
+    margin: -15px;
+    margin-top: -76px;
+}
 
 .modal-background {
     background-color: rgba(129, 129, 129, 0.251);

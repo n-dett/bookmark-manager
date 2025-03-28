@@ -224,7 +224,7 @@ svg {
     /* transition: fill .3s; */
 }
 
-.card-btns > button > svg:hover, .heart-active {
+.heart-active {
     fill: rgb(50, 50, 50);
 }
 
@@ -381,13 +381,26 @@ input, select {
 
 
 
+
 /* For all touch screen */
 @media (hover: none) and (pointer: coarse) { 
     /* Disable hover effects */
-    .button:hover, .submit-form-btn:hover, .card-btns > button > svg:hover,
-    .bookmark-card:hover, .category-btn:hover, .subcategory-btn:hover {
-      background-color: inherit; 
+    .category-btn:hover, .subcategory-btn:hover, .category-btn.active {
+        background-color: transparent;
     }
+
+    .bookmark-card:hover {
+        background-color: rgb(255, 255, 255);
+    }
+
+    /* .card-btns > button > svg:hover {
+        fill: rgb(160, 160, 160);
+    } */
+
+    .submit-form-btn:hover {
+        background-color: rgb(222, 222, 222);
+    }
+
 } 
 
 /* For all non-desktop */
@@ -437,9 +450,16 @@ input, select {
         -webkit-box-orient: vertical;
         white-space: normal;
     }
+    .caret {
+        margin-left: 2px;
+        padding-left: 4px;
+        padding-right: 10px;
+        font-size: 1.5rem;
+    }
     .modal {
         margin: 15px;
     }
+
 }
 
 @media (max-width: 400px) {

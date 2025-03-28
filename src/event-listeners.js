@@ -111,7 +111,7 @@ function openStaticModalListener(btnId, modalId) {
             const modal = document.getElementById(modalId);
             if(modal) {
                 toggleModal(modal);
-                if(btnId !== 'add-bookmark-btn'){
+                if(btnId !== 'add-bookmark-btn' && btnId !== "delete-category-btn"){
                     // If tablet/mobile nav, close it
                     if(window.innerWidth < 801){
                         toggleMobileSidebar();

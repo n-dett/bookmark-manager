@@ -10,7 +10,7 @@ import {
     populateSubcategoryDropdown,
     populateCategoryDropdown,
     hideAddSubcategoryBtn,
-    toggleHamburger
+    toggleMobileSidebar
 } from "./update-UI";
 import bookmarkStore from "./bookmarkStore";
 import { Category } from "./Category";
@@ -114,7 +114,7 @@ function openStaticModalListener(btnId, modalId) {
                 if(btnId !== 'add-bookmark-btn'){
                     // If tablet/mobile nav, close it
                     if(window.innerWidth < 801){
-                        toggleHamburger();
+                        toggleMobileSidebar();
                     }
                 }
             }
@@ -395,7 +395,7 @@ function displayCategoryListener() {
 
             // If tablet/mobile nav, close it
             if(window.innerWidth < 801){
-                toggleHamburger();
+                toggleMobileSidebar();
             }
         }
     })
@@ -415,7 +415,7 @@ function displaySubcategoryListener() {
 
             // If tablet/mobile nav, close it
             if(window.innerWidth < 801){
-                toggleHamburger();
+                toggleMobileSidebar();
             }
         }
     })
@@ -575,11 +575,11 @@ function filterCards(property, value) {
 }
 
 
-function toggleHamburgerListener() {
+function toggleMobileSidebarListener() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
 
     hamburgerBtn.addEventListener('click', function() {
-        toggleHamburger();
+        toggleMobileSidebar();
     })
 }
 
@@ -602,6 +602,14 @@ function delayNavTransition() {
 }
 
 
+function mobileSidebarCloseListener() {
+    const closeBtn = document.getElementById('sidebar-mobile-close');
+    closeBtn.addEventListener('click', function() {
+        toggleMobileSidebar();
+    })
+}
+
+
 
 
 function addAllEventListeners() {
@@ -609,10 +617,11 @@ function addAllEventListeners() {
     heartIconListener();
     cardClickListener();
 
-    // Nav listeners
+    // Sidebar listeners
     accordionListener();
-    toggleHamburgerListener();
+    toggleMobileSidebarListener();
     delayNavTransition();
+    mobileSidebarCloseListener();
 
     // Open and close modal listeners
     closeModalListener();

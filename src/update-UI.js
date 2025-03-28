@@ -297,7 +297,7 @@ function removeCategoryBtns(categoryBtns, categoryName) {
 }
 
 
-function toggleHamburger() {
+function toggleMobileSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     overlay.classList.toggle('hidden');
@@ -327,5 +327,5 @@ export {
     populateSubcategoryDropdown,
     populateCategoryDropdown,
     hideAddSubcategoryBtn,
-    toggleHamburger
+    toggleMobileSidebar
 }

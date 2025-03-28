@@ -10,7 +10,7 @@ A simple and responsive bookmark manager that displays bookmarks as a grid of cl
 - **CRUD Functionality**: Add, edit, and delete bookmarks, categories, and subcategories.
 - **Filtering**: Quickly filter bookmarks by category and subcategory.
 - **Responsive Design**: Optimized for various screen sizes.
-- **Modern JavaScript**: Built using ES Modules, JavaScript classes, and Webpack.
+- **Modern JavaScript**: Built using ES Modules, JavaScript classes, and Webpack. Uses client-side rendering.
 
 ## Technologies Used
 

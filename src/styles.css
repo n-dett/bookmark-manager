@@ -85,6 +85,7 @@ button {
     margin-left: 2px;
     padding-left: 4px;
     font-size: 1.3rem;
+    margin-right: 20px;
 }
 
 
@@ -242,8 +243,8 @@ svg {
 #overlay {
     background-color: rgba(129, 129, 129, 0.251);
     width: 100%;
-    height: calc(100% + 76px);
-    z-index: 2 !important;
+    height: 100vh;
+    z-index: 10;
     position: fixed;
     overflow: auto;
     margin: -15px;
@@ -433,16 +434,6 @@ input, select {
     h2 {
         font-size: 1.9rem;
     }
-    /* #overlay {
-        background-color: rgba(129, 129, 129, 0.251);
-        width: 100%;
-        height: calc(100% + 76px);
-        z-index: 2 !important;
-        position: fixed;
-        overflow: auto;
-        margin: -15px;
-        margin-top: -76px;
-    } */
     #sidebar {
         left: 0;
         transform: translateX(-100%);

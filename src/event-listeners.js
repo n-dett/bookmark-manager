@@ -372,7 +372,7 @@ function displayCategoryListener() {
             const category = e.target;
             let categoryName = category.textContent;
             // Remove caret
-            if(categoryName[categoryName.length - 1] === '▸') {
+            if(categoryName[categoryName.length - 1] === '▸' || categoryName[categoryName.length - 1] === '▾') {
                 categoryName = categoryName.slice(0, -1);
             }
 

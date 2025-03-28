@@ -23,7 +23,7 @@ function toggleHeartIcon(heartIcon) {
     // Re-enable hover after a short delay
     setTimeout(() => {
       heartIcon.classList.remove("no-hover");
-    }, 600); // Just enough time to avoid flicker
+    }, 1000); // Just enough time to avoid flicker
 }
 
 

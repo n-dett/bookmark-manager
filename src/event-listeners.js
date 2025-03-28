@@ -58,7 +58,6 @@ function heartIconListener() {
                 } else {
                     bookmark.favorite = false;
                     
-
                     // If current display is Favorites, reload display     
                     const categoryHeading = document.getElementById('category-heading');
                     const categoryName = categoryHeading.textContent;

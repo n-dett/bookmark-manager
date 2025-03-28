@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks Manager</title>
+<script defer src="main.js"></script></head>
+<body>
+    <header id="header-mobile">
+        <button id="hamburger-btn">
+            <?xml version="1.0" encoding="utf-8"?>
+                <svg version="1.1" id="hamburger-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 95.95" style="enable-background:new 0 0 122.88 95.95" xml:space="preserve">
+                    <style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style>
+                    <g>
+                        <path class="st0" d="M8.94,0h105c4.92,0,8.94,4.02,8.94,8.94l0,0c0,4.92-4.02,8.94-8.94,8.94h-105C4.02,17.88,0,13.86,0,8.94l0,0 C0,4.02,4.02,0,8.94,0L8.94,0z M8.94,78.07h105c4.92,0,8.94,4.02,8.94,8.94l0,0c0,4.92-4.02,8.94-8.94,8.94h-105 C4.02,95.95,0,91.93,0,87.01l0,0C0,82.09,4.02,78.07,8.94,78.07L8.94,78.07z M8.94,39.03h105c4.92,0,8.94,4.02,8.94,8.94l0,0 c0,4.92-4.02,8.94-8.94,8.94h-105C4.02,56.91,0,52.89,0,47.97l0,0C0,43.06,4.02,39.03,8.94,39.03L8.94,39.03z"/>
+                    </g>
+            </svg>
+        </button>
+        <h1>Bookmark Manager</h1>
+    </header>
+    <div id="overlay" class="hidden"></div>
+    <div id="sidebar-main">
+        <!-- Sidebar Navigation -->
+        <div id="sidebar">
+            <button type="button" id="sidebar-mobile-close">&#10005</button>
+            <h1 id="nav-heading">Bookmark Manager</h1>
+            <button id="add-category-btn">Add Category +</button>
+            <button id="add-subcategory-btn">Add Subcategory +</button>
+            <nav id="category-nav">
+                <button class="category-btn category-name static">All</button>
+                <button class="category-btn category-name static">Favorites</button>
+                <!-- <div class="category-btns-container">
+                    <button class="category-btn">
+                        <span class="category-name">Category 1</span>
+                        <span class="caret">&#9656</span>
+                    </button>
+                    <ul class="subcategory-list hidden">
+                        <button class="subcategory-btn">Subcategory 1</button>
+                        <button class="subcategory-btn">Subcategory 2</button>
+                        <button class="subcategory-btn">Subcategory 3</button>
+                    </ul>
+                </div>
+                <div class="category-btns-container">
+                    <button class="category-btn">
+                        <span class="category-name">Category 2</span>
+                        <span class="caret">&#9656</span>
+                    </button>
+                </div> -->
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div id="main-content">
+            <div id="main-content-header">
+                <div id="category-heading-container">
+                    <button id="delete-category-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.707,12.293a1,1,0,1,1-1.414,1.414L12,13.414,9.707,15.707a1,1,0,0,1-1.414-1.414L10.586,12,8.293,9.707A1,1,0,0,1,9.707,8.293L12,10.586l2.293-2.293a1,1,0,0,1,1.414,1.414L13.414,12Z"/></svg>
+                    </button>
+                    <h2 id="category-heading">All</h2>
+                </div>
+                <div id="add-subcategory-bookmark-container">
+                    <button id="add-bookmark-btn">Add Bookmark +</button>
+                </div>
+            </div>
+            <!-- Bookmark Cards -->
+            <div id="bookmarks-container">
+                <!-- <div class="bookmark-card" data-index="0">
+                    <div class="card-text">
+                        <h3>
+                            <a href="https://en.wikipedia.org/wiki/Main_Page" target="_blank">
+                                Wikipedia
+                            </a>
+                        </h3>
+                        <p class="url-text">https://en.wikipedia.org/wiki/Main_Page</p>
+                    </div>
+                    <div class="card-btns">
+                        <button class="heart-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M20.808 11.079C19.829 16.132 12 20.5 12 20.5s-7.829-4.368-8.808-9.421C2.227 6.1 5.066 3.5 8 3.5a4.444 4.444 0 0 1 4 2 4.444 4.444 0 0 1 4-2c2.934 0 5.773 2.6 4.808 7.579z"/></svg>
+                        </button>
+                        <button class="edit-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 14-3 1 1-3 7-7 2 2z"/></svg>
+                        </button>
+                        <button class="delete-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.707,12.293a1,1,0,1,1-1.414,1.414L12,13.414,9.707,15.707a1,1,0,0,1-1.414-1.414L10.586,12,8.293,9.707A1,1,0,0,1,9.707,8.293L12,10.586l2.293-2.293a1,1,0,0,1,1.414,1.414L13.414,12Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            -->
+            </div>
+        </div>
+    
+
+
+        <!-- Add Bookmark modal -->
+        <div class="modal-background hidden" id="add-bookmark-modal-bgd">
+            <form id="add-bookmark-form" class="modal">
+                <div class="close-btn-container">
+                    <button type="button" class="close-btn">&#10005</button>
+                </div>
+                <h1>Add Bookmark</h1>
+                <div>
+                    <label for="new-bookmark-name">Bookmark Name</label>
+                    <input type="text" id="new-bookmark-name" maxlength="65">
+                </div>
+                <div>
+                    <label for="new-bookmark-url">URL</label>
+                    <input type="text" id="new-bookmark-url" placeholder="Copy and paste URL">
+                </div>
+                <div>
+                    <label for="new-bookmark-category-dropdown">Category</label>
+                    <select name="new-bookmark-category-dropdown" id="new-bookmark-category-dropdown" class="categories">
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="new-bookmark-subcategory-dropdown">Subcategory</label>
+                    <select name="new-bookmark-subcategory-dropdown" id="new-bookmark-subcategory-dropdown" class="subcategories">
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <button type="button" class="submit-form-btn" id="submit-new-bookmark">Add</button>
+            </form>
+        </div>
+
+        <!-- Edit Bookmark modal -->
+        <div class="modal-background hidden" id="edit-bookmark-modal-bgd">
+            <form id="add-bookmark-form" class="modal">
+            <div class="close-btn-container">
+                <button type="button" class="close-btn">&#10005</button>
+            </div>
+            <h1>Edit Bookmark</h1>
+            <div>
+                <label for="edit-bookmark-name">Bookmark Name</label>
+                <input type="text" id="edit-bookmark-name" maxlength="70">
+            </div>
+            <div>
+                <label for="edit-bookmark-url">URL</label>
+                <input type="text" id="edit-bookmark-url">
+            </div>
+                <div>
+                    <label for="edit-bookmark-category-dropdown">Category</label>
+                    <select name="edit-bookmark-category-dropdown" id="edit-bookmark-category-dropdown" class="categories">
+                        <option value="">None</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="edit-bookmark-subcategory-dropdown">Subcategory</label>
+                    <select name="edit-bookmark-subcategory-dropdown" id="edit-bookmark-subcategory-dropdown" class="subcategories">
+                        <option value="">None</option>
+                    </select>
+                </div>
+            <button type="button" class="submit-form-btn" id="submit-edit-bookmark">Done</button>
+            </form>
+        </div>
+
+        <!-- Delete Bookmark confirmation modal -->
+        <div class="modal-background hidden" id="delete-bookmark-modal-bgd">
+            <div id="delete-bookmark-modal" class="modal">
+            <div class="close-btn-container">
+                <button type="button" class="close-btn">&#10005</button>
+            </div>
+            <div class="delete-message-container">
+                <h3 id="delete-bookmark-message">Are you sure you want to delete the bookmark for <span id="delete-bookmark-name" class="modal-message-name">The Bookmark Name Here</span>?</h3>
+            </div>
+            <div>
+            </div>
+            <button type="button" class="submit-form-btn" id="submit-delete-bookmark">Delete</button>
+            </div>
+        </div>
+
+        <!-- Delete Category confirmation modal -->
+        <div class="modal-background hidden" id="delete-category-modal-bgd">
+            <div id="delete-category-modal" class="modal">
+                <div class="close-btn-container">
+                    <button type="button" class="close-btn">&#10005</button>
+                </div>
+                <div class="delete-message-container">
+                    <h3 id="delete-category-message">Are you sure you want to delete the <span id="modal-message-category">category</span> for <span class="modal-message-name" id="delete-category-name">Category Name</span> and all its bookmarks?</h3>
+                </div>
+                <div>
+                </div>
+                <button type="button" class="submit-form-btn" id="submit-delete-category">Delete</button>
+            </div>
+        </div>
+
+        <!-- Add Category modal -->
+        <div class="modal-background hidden" id="add-category-modal-bgd">
+            <form id="add-category-form" class="modal">
+                <div class="close-btn-container">
+                    <button type="button" class="close-btn">&#10005</button>
+                </div>
+                <h1>Add Category</h1>
+                <div>
+                    <label for="new-category-name">Category Name</label>
+                    <input type="text" id="new-category-name" maxlength="50">
+                </div>
+                <button type="button" class="submit-form-btn" id="submit-new-category">Add</button>
+            </form>
+        </div>
+
+        <!-- Add Subcategory modal -->
+        <div class="modal-background hidden" id="add-subcategory-modal-bgd">
+            <form id="add-subcategory-form" class="modal">
+                <div class="close-btn-container">
+                    <button type="button" class="close-btn">&#10005</button>
+                </div>
+                <h1>Add Subcategory</h1>
+                <div>
+                    <label for="add-subcategory-category-dropdown">Category</label>
+                    <select name="add-subcategory-category-dropdown" id="add-subcategory-category-dropdown" class="categories">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="new-subcategory-name">Subcategory Name</label>
+                    <input type="text" id="new-subcategory-name" maxlength="70">
+                </div>
+                <button type="button" class="submit-form-btn" id="submit-new-subcategory">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

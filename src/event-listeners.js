@@ -48,7 +48,7 @@ function heartIconListener() {
 
             // Add favorite to bookmark object
             let selectedCard = e.target.closest('.bookmark-card');
-            console.log('card:', selectedCard);
+
             if(selectedCard) {
                 const index = parseInt(selectedCard.dataset.index);
                 const bookmark = bookmarkStore.allBookmarks[index];
@@ -266,7 +266,7 @@ function deleteBookmarkListener() {
 
             const currentHeading = document.getElementById('category-heading');
             const headingText = currentHeading.textContent;
-            console.log('heading text', headingText);
+
             let filteredCards;
 
             if(headingText === 'All') {
@@ -309,7 +309,7 @@ function deleteCategoryListener() {
         if(modalText && categoryName) {
             modalText.textContent = categoryName;
         }
-        console.log('is category?', isCategory(categoryName));
+
         if(!isCategory(categoryName)) {
             const modalCategoryText = document.getElementById('modal-message-category');
             modalCategoryText.textContent = 'subcategory';
@@ -547,7 +547,7 @@ function editBookmarkListener() {
 
             const currentHeading = document.getElementById('category-heading');
             const headingText = currentHeading.textContent;
-            console.log('heading text', headingText);
+
             let filteredCards;
 
             if(headingText === 'All') {

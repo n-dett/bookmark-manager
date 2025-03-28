@@ -201,9 +201,12 @@ function populateCategoryDropdown(dropdownID) {
     }
 
     // Populate with current categories
-    const optionNone = document.createElement('option');
-    optionNone.textContent = 'None';
-    dropdown.appendChild(optionNone);
+    if(dropdownID != 'add-subcategory-category-dropdown'){
+        const optionNone = document.createElement('option');
+        optionNone.textContent = 'None';
+        dropdown.appendChild(optionNone);
+    }
+
     Category.getAllCategories().forEach(category => {
         const newOption = document.createElement('option');
         newOption.textContent = category.name;
@@ -211,7 +214,18 @@ function populateCategoryDropdown(dropdownID) {
     })
 }
 
-
+function hideAddSubcategoryBtn(bool) {
+    const subcatBtn = document.getElementById('add-subcategory-btn');
+    if(bool) {
+        if(!subcatBtn.classList.contains('hidden')) {
+            subcatBtn.classList.add('hidden');
+        } 
+    } else {
+        if(subcatBtn.classList.contains('hidden')) {
+            subcatBtn.classList.remove('hidden');
+        } 
+    }
+}
 
 
 function populateSubcategoryDropdown(subcategoryDropdownID, categoryDropdownID) {
@@ -303,5 +317,6 @@ export {
     changeCategoryHeading,
     removeCategoryBtns,
     populateSubcategoryDropdown,
-    populateCategoryDropdown
+    populateCategoryDropdown,
+    hideAddSubcategoryBtn
 }

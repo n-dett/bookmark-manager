@@ -224,7 +224,7 @@ svg {
     /* transition: fill .3s; */
 }
 
-.heart-active {
+.heart-active, .card-btns > button > svg:hover {
     fill: rgb(50, 50, 50);
 }
 
@@ -393,9 +393,9 @@ input, select {
         background-color: rgb(255, 255, 255);
     }
 
-    /* .card-btns > button > svg:hover {
+    .card-btns > button > svg:hover {
         fill: rgb(160, 160, 160);
-    } */
+    }
 
     .submit-form-btn:hover {
         background-color: rgb(222, 222, 222);

@@ -288,6 +288,7 @@ function addCategoryListener() {
         populateCategoryDropdown('new-bookmark-category-dropdown');
         populateCategoryDropdown('edit-bookmark-category-dropdown');
         hideAddSubcategoryBtn(false);
+        categoryDropdown.value = "";
     })
 }
 

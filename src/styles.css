@@ -239,7 +239,7 @@ svg {
     fill: rgb(160, 160, 160); 
 } */
   
-#overlay {
+/* #overlay {
     background-color: rgba(129, 129, 129, 0.251);
     width: 100%;
     height: calc(100% + 76px);
@@ -248,7 +248,7 @@ svg {
     overflow: auto;
     margin: -15px;
     margin-top: -76px;
-}
+} */
 
 .modal-background {
     background-color: rgba(129, 129, 129, 0.251);
@@ -433,11 +433,21 @@ input, select {
     h2 {
         font-size: 1.9rem;
     }
+    #overlay {
+        background-color: rgba(129, 129, 129, 0.251);
+        width: 100%;
+        height: calc(100% + 76px);
+        z-index: 2 !important;
+        position: fixed;
+        overflow: auto;
+        margin: -15px;
+        margin-top: -76px;
+    }
     #sidebar {
         left: 0;
         transform: translateX(-100%);
-        /* position: fixed;
-        z-index: 99; */
+        position: fixed;
+        z-index: 99;
         margin: 0;
         transition: transform 0.3s;
     }
@@ -477,6 +487,7 @@ input, select {
     .modal {
         margin: 15px;
     }
+
 
 }
 

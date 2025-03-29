@@ -457,13 +457,31 @@ function addSubcategoryListener() {
 
     addSubcategoryBtn.addEventListener('click', function() {
         populateCategoryDropdown('add-subcategory-category-dropdown');
+        const categoryDropdown = document.getElementById('add-subcategory-category-dropdown');
+        const heading = document.getElementById('category-heading');
+        const headingText = heading.textContent;
+        const categoryOptionsArr = Array.from(categoryDropdown.options);
+
+        if(headingText === 'All' || headingText === 'Favorites') {
+            // Category
+            categoryDropdown.selectedIndex = 0;
+
+        } else if (isCategory(headingText)) {
+            // Category
+            const parentIndex = categoryOptionsArr.findIndex(category => category.value === headingText);
+            categoryDropdown.selectedIndex = parentIndex;            
+
+        } else {
+            // Current page is subcategory
+            const parentCategory = findParentCategory(headingText);
+            const parentCategoryName = parentCategory.name;
+            const parentIndex = categoryOptionsArr.findIndex(category => category.text === parentCategoryName);
+            categoryDropdown.selectedIndex = parentIndex;
+        }
     })
 
-    // On Add Category submit button
+    // On Add Subategory submit button
     const addSubcategorySubmitBtn = document.getElementById('submit-new-subcategory');
-    const subcategoryDropdown = document.getElementById('new-subcategory-name');
-    const categoryDropdown = document.getElementById('add-subcategory-category-dropdown');
-
     addSubcategorySubmitBtn.addEventListener('click', function() {
         if(categoryDropdown.value == "") {
             alert('You must add a category before adding a subcategory')

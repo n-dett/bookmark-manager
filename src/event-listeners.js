@@ -183,6 +183,8 @@ function addBookmarkListener() {
 
             // Subcategory
             populateSubcategoryDropdown('new-bookmark-subcategory-dropdown', 'new-bookmark-category-dropdown')
+            const subcategoryIndex = Array.from(subcategoryDropdown.options).findIndex(subcategory => subcategory.text === headingText);
+            subcategoryDropdown.selectedIndex = subcategoryIndex;
         }
     })
 

@@ -158,6 +158,7 @@ function displayCategoryBtns() {
     const categoryNav = document.getElementById('category-nav')
 
     categoriesArr.forEach(category => {
+        if (!category || !category.name) return;
         // Create category buttons container
         const categoryBtnsContainer = document.createElement('div');
         categoryBtnsContainer.classList.add('category-btns-container');
@@ -198,6 +199,7 @@ function displayCategoryBtns() {
             categoryBtnsContainer.appendChild(subcategoryList);
         }
     });
+    console.log(document.querySelectorAll('.category-btns-container'));
 }
 
 

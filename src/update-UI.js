@@ -154,6 +154,11 @@ function displayCategoryBtns() {
         subcategoryBtns.forEach(btn => btn.remove());
     }
 
+    // Clear containers
+    const categoryContainers = document.querySelectorAll('.category-btns-container');
+    categoryContainers.forEach(container => container.remove());
+
+
     // Append categories
     const categoryNav = document.getElementById('category-nav')
 

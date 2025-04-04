@@ -572,6 +572,9 @@ function editBookmarkListener() {
 
             if(headingText === 'All') {
                 displayCards(bookmarkStore.allBookmarks);
+            } else if (headingText == 'Favorites') {
+                filteredCards = filterCards('favorite', true);
+                displayCards(filteredCards);
             } else if(isCategory(headingText)) {
                 filteredCards = filterCards('category', headingText);
                 displayCards(filteredCards);
